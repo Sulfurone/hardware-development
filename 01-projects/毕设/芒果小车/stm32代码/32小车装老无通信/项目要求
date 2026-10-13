@@ -1,0 +1,62 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+</head>
+
+本实验要实现功能：
+（1）通过 pwm输出控制小车转向，循迹
+（2）显示小车运行的时间以及路程
+（3）利用超声波测距，屏幕显示前方障碍物距离
+（4）实现小车循迹
+（5）前方有障碍物报警
+（6）通过遥控板控制其运行轨迹
+
+
+以下函数代码是用来实时在lcd屏幕上输出传回的数字的（见手势识别模块）
+//@@@@@@&&&&&￡¤￡¤￡¤￡¤￡¤×?óDó?μ?á???μ?·???ò?
+void Ps_test(void)
+{
+    u8 i;
+	u8 key;
+	u8 data[2]={0x00};
+	u8 obj_brightness=0;
+	u16 obj_size=0;
+	
+	paj7620u2_selectBank(BANK0);//??è?BANK0??′??÷??óò
+	for(i=0;i<PROXIM_SIZE;i++)
+	{
+		GS_Write_Byte(proximity_arry[i][0],proximity_arry[i][1]);//?ó?ü?ì2a?￡ê?3?ê??ˉ
+	}
+	paj7620u2_selectBank(BANK0);//·μ??BANK0??′??÷??óò
+	i=0;
+	POINT_COLOR=BLUE;//éè??×?ì??aà?é?
+	LCD_Fill(30,170,300,300,WHITE);
+	LCD_ShowString(30,180,200,16,16,"KEY_UP: Exit the test");
+	LCD_ShowString(30,210,200,16,16,"Ps test");
+	LCD_ShowString(30,240,200,16,16,"Brightness");
+	LCD_ShowString(160,240,200,16,16,"Size");
+	POINT_COLOR=RED;//éè??×?ì??aà?é?	
+	
+	while(1)//￡¤￡¤￡¤￡¤
+	{	
+		key = KEY_Scan(0);
+		if(key==WKUP_PRES) break;
+		
+		obj_brightness = GS_Read_Byte(PAJ_GET_OBJECT_BRIGHTNESS);//?áè???ì?áá?è
+		data[0] = GS_Read_Byte(PAJ_GET_OBJECT_SIZE_1);//?áè???ì?′óD?
+		data[1] = GS_Read_Byte(PAJ_GET_OBJECT_SIZE_2);
+		obj_size = ((u16)data[1] & 0x0f)<<8 | data[0];
+		LCD_ShowxNum(50,270,obj_brightness,3,24,0);
+		LCD_ShowxNum(152,270,obj_size,3,24,0);
+		printf("obj_brightness: %d\r\n",obj_brightness);
+        printf("obj_size: %d\r\n",obj_size);
+		
+		delay_ms(100);
+		i++;
+		if(i==5)
+		{
+		    LED0=!LED0;//ìáê??μí3?y?ú??DD	
+			i=0;
+		}
+	}
+	
+}

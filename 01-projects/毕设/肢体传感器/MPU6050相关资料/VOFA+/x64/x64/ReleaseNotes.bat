@@ -1,0 +1,1 @@
+start https://www.vofa.plus/docs/function/release_note

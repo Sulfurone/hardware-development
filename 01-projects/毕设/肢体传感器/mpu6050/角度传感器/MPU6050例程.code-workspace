@@ -1,0 +1,23 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "kalman_filter.h": "c",
+            "inv_mpu_dmp_motion_driver.h": "c",
+            "_i2c_.h": "c",
+            "generic.h": "c",
+            "stm32f10x.h": "c",
+            "math.h": "c",
+            "mpu6050.h": "c",
+            "string.h": "c",
+            "oled_i2c.h": "c",
+            "oled_data.h": "c",
+            "stdint.h": "c"
+        }
+    },
+    "extensions": {}
+}
