@@ -11,18 +11,18 @@ logging.getLogger('pypdf').setLevel(logging.ERROR)
 
 ROOT = Path(__file__).resolve().parents[2]
 GROUPS = {
-    '01-projects': ['毕设', '课设', '茶杯', '晶体管测量仪'],
-    '02-competitions': ['电赛2022（循迹小车）', '电赛2023（同轴电缆）', '电赛2024（晶体管测量仪）', '电赛电源题国赛资料'],
-    '03-boards-and-examples': ['51环境', '精英mini', '普中32f407', '野火f103ve', '正点原子103zet6', 'GD', 'STCzhufeiku', 'STM32入门教程资料'],
-    '04-modules': ['ESP8266固件烧录资料', 'mini平衡', 'mpu9250全部'],
-    '05-reference': ['461单片机课程设计-先转存在提取以免丢失', '六位半资料.rar', '模拟电路讲义(2).pdf', '嵌入式系统高级C语言编程_12778630.pdf', '全元素.zip', '十大滤波.rar', '西电180903PCB培训.pdf', '信号处理中相关法的应用.pptx', '信号发生器.zip', '一种由555时基电路构成的多谐振荡电路 (2).pdf', '硬件工程师入门教程(3).pdf', '运放的单电源供电.pdf', '运算放大器权威指南 (第3版)  pdf (2).pdf', 'STC15_LIB-master.zip'],
-    '06-local-tools': ['keil 5', 'STC烧录', 'XCOM V2.6', '串口调试助手.zip', 'CH34x_Install_Windows_v3_4.EXE', 'Proteus8.17 SP2.rar', 'Setup_JLink_V498e.exe', 'UartAssist.zip', 'USB转串口CH340驱动安装包.zip'],
+    '01-项目与毕业设计': ['毕设', '课设', '茶杯', '晶体管测量仪'],
+    '02-电子设计竞赛': ['电赛2022（循迹小车）', '电赛2023（同轴电缆）', '电赛2024（晶体管测量仪）', '电赛电源题国赛资料'],
+    '03-开发板与例程': ['51环境', '精英mini', '普中32f407', '野火f103ve', '正点原子103zet6', 'GD', 'STCzhufeiku', 'STM32入门教程资料'],
+    '04-模块资料': ['ESP8266固件烧录资料', 'mini平衡', 'mpu9250全部'],
+    '05-参考资料': ['461单片机课程设计-先转存在提取以免丢失', '六位半资料.rar', '模拟电路讲义(2).pdf', '嵌入式系统高级C语言编程_12778630.pdf', '全元素.zip', '十大滤波.rar', '西电180903PCB培训.pdf', '信号处理中相关法的应用.pptx', '信号发生器.zip', '一种由555时基电路构成的多谐振荡电路 (2).pdf', '硬件工程师入门教程(3).pdf', '运放的单电源供电.pdf', '运算放大器权威指南 (第3版)  pdf (2).pdf', 'STC15_LIB-master.zip'],
+    '06-本地工具': ['keil 5', 'STC烧录', 'XCOM V2.6', '串口调试助手.zip', 'CH34x_Install_Windows_v3_4.EXE', 'Proteus8.17 SP2.rar', 'Setup_JLink_V498e.exe', 'UartAssist.zip', 'USB转串口CH340驱动安装包.zip'],
 }
 
 IGNORE = '''# Local audit reports and installed software
 /.local-audit/
-/06-local-tools/
-/01-projects/晶体管测量仪/tools/
+/06-本地工具/
+/01-项目与毕业设计/晶体管测量仪/tools/
 # Archives, videos, installers and packaged dependencies
 *.zip
 *.rar
