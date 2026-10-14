@@ -1,0 +1,21 @@
+*** Creating Trace Output File '.\rvmdk\watchdog.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\rvmdk\startup_rvmdk.o"'
+### List of Objects: adding '".\rvmdk\watchdog.o"'
+### List of Objects: adding '"..\..\..\driverlib\rvmdk\driverlib.lib"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\rvmdk\startup_rvmdk.o" ".\rvmdk\watchdog.o" "..\..\..\driverlib\rvmdk\driverlib.lib" --library_type=microlib --strict --scatter "watchdog.sct" 
+--entry Reset_Handler --autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\rvmdk\watchdog.map" -o ".\rvmdk\watchdog.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\rvmdk\watchdog.axf'
+### ADS-LD Command File: '.\rvmdk\watchdog.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\rvmdk\watchdog.lnp', Handle=0x000002B4
+### Writing '.lnp' file
+### ADS-LD Command file '.\rvmdk\watchdog.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

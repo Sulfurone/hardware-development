@@ -1,0 +1,38 @@
+### uVision2 Project, (C) Keil Software
+### Do not modify !
+
+ cExt (*.c)
+ aExt (*.s*; *.src; *.a*)
+ oExt (*.obj)
+ lExt (*.lib)
+ tExt (*.txt; *.h; *.inc)
+ pExt (*.plm)
+ CppX (*.cpp)
+ DaveTm { 0,0,0,0,0,0,0,0 }
+
+Target (blinky), 0x0004 // Tools: 'ARM-ADS'
+GRPOPT 1,(Source),1,0,0
+GRPOPT 2,(Documentation),0,0,0
+
+OPTFFF 1,1,1,0,0,0,0,0,<.\blinky.c><blinky.c> 
+OPTFFF 1,2,2,0,0,0,0,0,<.\startup_rvmdk.S><startup_rvmdk.S> 
+OPTFFF 2,3,5,0,0,0,0,0,<.\readme.txt><readme.txt> 
+
+
+TARGOPT 1, (blinky)
+ ADSCLK=50000000
+  OPTTT 0,1,1,0
+  OPTHX 1,65535,0,0,0
+  OPTLX 79,66,8,<.\rvmdk\>
+  OPTOX 16
+  OPTLT 1,1,1,0,1,1,0,1,0,0,0,0
+  OPTXL 1,1,1,1,1,1,1,0,0
+  OPTFL 1,0,1
+  OPTAX 0
+  OPTDL (SARMCM3.DLL)()(DLM.DLL)(-pLM3S811)(SARMCM3.DLL)()(TLM.DLL)(-pLM3S811)
+  OPTDBG 48125,9,()()()()()()()()()() (BIN\lmidk-agdi.dll)()()()
+  OPTDF 0x0
+  OPTLE <>
+  OPTLC <>
+EndOpt
+

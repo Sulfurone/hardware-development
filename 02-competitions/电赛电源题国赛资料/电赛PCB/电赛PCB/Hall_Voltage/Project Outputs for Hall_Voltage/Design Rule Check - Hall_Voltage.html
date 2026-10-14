@@ -1,0 +1,933 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://D:\Altium Designer20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">10/12/2021</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">10:45:49 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc" class="file"><acronym title="H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc">H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">195</td></tr>
+</table>
+</td>
+</table><a name="IDDOQLUSIUHJYTFS1X0TZTNUQVZN5S25ORX45IMLNZZALHUXD2EIBH"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPP5O4WRRPDVBHJGDHYVDN4SZ1E3KENA35DXB1GDMZN4DRR2F1A0P">Clearance Constraint (Gap=20mil) (All),(All)</a></td>
+<td class="column2">32</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFGHIB5AT2VNGIDV4IOTYDDLGYLENMVOLHHP5EJNLCIFYNZWCQ4GE">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIA11MKZII4NCGVTJ41ADIEGBDPEAHUJSNXNZEHG5PJXUDUFVAWTC">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDANSSQC2IRX1RF025W0IXHU4G3MP3XZGKIADZNDG5QOY1GIIOHPIM">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4MU25ZVS5MI1CRYDGPGDTG3CSCBCQT3WG44WTEJKYLPDMS0RANFJ">Width Constraint (Min=10mil) (Max=100mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">53</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEM00G0JG1MYJBGMT0U3DJU435BKT5J1OMS4GFCFCPONKOCE0BAID">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPB0H4FPAY3GMNKSD3PWG5WJEKFYRHDPXCEK2RJZ5P4T0FUGI2HC">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRQRG2PTDBJU0CGSJOVO0D3TJDJY4PMM0DE3QYTBPJEBC3SYGPOTC">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVO344VTYXNJIOENZ31O1HOZEROJCILVUJ2JWTLGRMJL1LFLUOXTC">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDREDOZVOANCYVHAHYL2HFWDF5RD2CJUPPMIG2AAPKLWOJIMX4HG4C">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">94</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXMBMPBP1ELMXPFKPFEE15JSSDHHOOCRUNEEPOWP1XJPKBDUYMTXH">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0PRH45X0CQMDIZLIH1YPF4GJSNJC4Z05RVO2JSEOLGJYDT5WWFHN">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDS1D0M0R2H2SBPXS5YA1CWDCX1DSP34B0GHWZUOLTVVTPMWOPAWLI">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">195</td>
+</tr>
+</table><br><a name="IDPP5O4WRRPDVBHJGDHYVDN4SZ1E3KENA35DXB1GDMZN4DRR2F1A0P"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=20mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3206.729mil|Location2.X=3227.979mil|Location1.Y=4701.088mil|Location2.Y=4729.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3206.729mil|Location2.X=3227.979mil|Location1.Y=4701.088mil|Location2.Y=4729.208mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1713.976mil,2464.252mil)(1728.976mil,2464.252mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3206.729mil|Location2.X=3227.979mil|Location1.Y=4741.088mil|Location2.Y=4769.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3206.729mil|Location2.X=3227.979mil|Location1.Y=4741.088mil|Location2.Y=4769.208mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1713.976mil,2504.252mil)(1728.976mil,2504.252mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3206.729mil|Location2.X=3227.979mil|Location1.Y=4701.088mil|Location2.Y=4729.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3206.729mil|Location2.X=3227.979mil|Location1.Y=4701.088mil|Location2.Y=4729.208mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1728.976mil,2464.252mil)(1728.976mil,2484.252mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3206.729mil|Location2.X=3227.979mil|Location1.Y=4741.088mil|Location2.Y=4769.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3206.729mil|Location2.X=3227.979mil|Location1.Y=4741.088mil|Location2.Y=4769.208mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1728.976mil,2484.252mil)(1728.976mil,2504.252mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3202.729mil|Location2.X=3223.979mil|Location1.Y=4701.088mil|Location2.Y=4729.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3202.729mil|Location2.X=3223.979mil|Location1.Y=4701.088mil|Location2.Y=4729.208mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1748.976mil,2464.252mil)(1748.976mil,2484.252mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3202.729mil|Location2.X=3223.979mil|Location1.Y=4701.088mil|Location2.Y=4729.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3202.729mil|Location2.X=3223.979mil|Location1.Y=4701.088mil|Location2.Y=4729.208mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1748.976mil,2464.252mil)(1763.976mil,2464.252mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3202.729mil|Location2.X=3223.979mil|Location1.Y=4721.088mil|Location2.Y=4749.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3202.729mil|Location2.X=3223.979mil|Location1.Y=4721.088mil|Location2.Y=4749.208mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1748.976mil,2484.252mil)(1748.976mil,2504.252mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3202.729mil|Location2.X=3223.979mil|Location1.Y=4741.088mil|Location2.Y=4769.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3202.729mil|Location2.X=3223.979mil|Location1.Y=4741.088mil|Location2.Y=4769.208mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1748.976mil,2504.252mil)(1763.976mil,2504.252mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.754mil|Location2.X=3312.004mil|Location1.Y=1874.735mil|Location2.Y=1902.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.754mil|Location2.X=3312.004mil|Location1.Y=1874.735mil|Location2.Y=1902.855mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1798.001mil,-362.101mil)(1813.001mil,-362.101mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.754mil|Location2.X=3312.004mil|Location1.Y=1834.735mil|Location2.Y=1862.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.754mil|Location2.X=3312.004mil|Location1.Y=1834.735mil|Location2.Y=1862.855mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1798.001mil,-402.101mil)(1813.001mil,-402.101mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.754mil|Location2.X=3312.004mil|Location1.Y=1874.735mil|Location2.Y=1902.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.754mil|Location2.X=3312.004mil|Location1.Y=1874.735mil|Location2.Y=1902.855mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1813.001mil,-382.101mil)(1813.001mil,-362.101mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.754mil|Location2.X=3312.004mil|Location1.Y=1834.735mil|Location2.Y=1862.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.754mil|Location2.X=3312.004mil|Location1.Y=1834.735mil|Location2.Y=1862.855mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1813.001mil,-402.101mil)(1813.001mil,-382.101mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3286.754mil|Location2.X=3308.004mil|Location1.Y=1874.735mil|Location2.Y=1902.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3286.754mil|Location2.X=3308.004mil|Location1.Y=1874.735mil|Location2.Y=1902.855mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1833.001mil,-362.101mil)(1848.001mil,-362.101mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3286.754mil|Location2.X=3308.004mil|Location1.Y=1854.735mil|Location2.Y=1882.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3286.754mil|Location2.X=3308.004mil|Location1.Y=1854.735mil|Location2.Y=1882.855mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1833.001mil,-382.101mil)(1833.001mil,-362.101mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3286.754mil|Location2.X=3308.004mil|Location1.Y=1834.735mil|Location2.Y=1862.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3286.754mil|Location2.X=3308.004mil|Location1.Y=1834.735mil|Location2.Y=1862.855mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1833.001mil,-402.101mil)(1833.001mil,-382.101mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3286.754mil|Location2.X=3308.004mil|Location1.Y=1834.735mil|Location2.Y=1862.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3286.754mil|Location2.X=3308.004mil|Location1.Y=1834.735mil|Location2.Y=1862.855mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (1833.001mil,-402.101mil)(1848.001mil,-402.101mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=3919.198mil|Location2.Y=3947.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=3919.198mil|Location2.Y=3947.318mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2460.63mil,1682.362mil)(2475.63mil,1682.362mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=3959.198mil|Location2.Y=3987.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=3959.198mil|Location2.Y=3987.318mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2460.63mil,1722.362mil)(2475.63mil,1722.362mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=2738.096mil|Location2.Y=2766.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=2738.096mil|Location2.Y=2766.216mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2460.63mil,501.26mil)(2475.63mil,501.26mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=2778.096mil|Location2.Y=2806.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=2778.096mil|Location2.Y=2806.216mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2460.63mil,541.26mil)(2475.63mil,541.26mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=3919.198mil|Location2.Y=3947.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=3919.198mil|Location2.Y=3947.318mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2475.63mil,1682.362mil)(2475.63mil,1702.362mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=3959.198mil|Location2.Y=3987.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=3959.198mil|Location2.Y=3987.318mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2475.63mil,1702.362mil)(2475.63mil,1722.362mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=2738.096mil|Location2.Y=2766.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=2738.096mil|Location2.Y=2766.216mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2475.63mil,501.26mil)(2475.63mil,521.26mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=2778.096mil|Location2.Y=2806.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3953.383mil|Location2.X=3974.633mil|Location1.Y=2778.096mil|Location2.Y=2806.216mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2475.63mil,521.26mil)(2475.63mil,541.26mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=3919.198mil|Location2.Y=3947.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=3919.198mil|Location2.Y=3947.318mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2495.63mil,1682.362mil)(2495.63mil,1702.362mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=3919.198mil|Location2.Y=3947.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=3919.198mil|Location2.Y=3947.318mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2495.63mil,1682.362mil)(2510.63mil,1682.362mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=3939.198mil|Location2.Y=3967.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=3939.198mil|Location2.Y=3967.318mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2495.63mil,1702.362mil)(2495.63mil,1722.362mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=3959.198mil|Location2.Y=3987.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=3959.198mil|Location2.Y=3987.318mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2495.63mil,1722.362mil)(2510.63mil,1722.362mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=2738.096mil|Location2.Y=2766.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=2738.096mil|Location2.Y=2766.216mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2495.63mil,501.26mil)(2495.63mil,521.26mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=2738.096mil|Location2.Y=2766.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=2738.096mil|Location2.Y=2766.216mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2495.63mil,501.26mil)(2510.63mil,501.26mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=2758.096mil|Location2.Y=2786.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=2758.096mil|Location2.Y=2786.216mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2495.63mil,521.26mil)(2495.63mil,541.26mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=2778.096mil|Location2.Y=2806.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.383mil|Location2.X=3970.633mil|Location1.Y=2778.096mil|Location2.Y=2806.216mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Bottom Layer And Track (2495.63mil,541.26mil)(2510.63mil,541.26mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID4MU25ZVS5MI1CRYDGPGDTG3CSCBCQT3WG44WTEJKYLPDMS0RANFJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Width Constraint (Min=10mil) (Max=100mil) (Preferred=10mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3170.712mil|Location2.X=3183.87mil|Location1.Y=4718.941mil|Location2.Y=4729.941mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3170.712mil|Location2.X=3183.87mil|Location1.Y=4718.941mil|Location2.Y=4729.941mil|Absolute=True">Width Constraint: Arc (1713.976mil,2484.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3170.712mil|Location2.X=3183.799mil|Location1.Y=4747.225mil|Location2.Y=4758.225mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3170.712mil|Location2.X=3183.799mil|Location1.Y=4747.225mil|Location2.Y=4758.225mil|Absolute=True">Width Constraint: Arc (1713.976mil,2484.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3248.997mil|Location2.X=3262.154mil|Location1.Y=4747.225mil|Location2.Y=4758.225mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3248.997mil|Location2.X=3262.154mil|Location1.Y=4747.225mil|Location2.Y=4758.225mil|Absolute=True">Width Constraint: Arc (1763.976mil,2484.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3248.997mil|Location2.X=3262.083mil|Location1.Y=4718.941mil|Location2.Y=4729.941mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3248.997mil|Location2.X=3262.083mil|Location1.Y=4718.941mil|Location2.Y=4729.941mil|Absolute=True">Width Constraint: Arc (1763.976mil,2484.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3257.767mil|Location2.X=3271.417mil|Location1.Y=1883.359mil|Location2.Y=1894.359mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3257.767mil|Location2.X=3271.417mil|Location1.Y=1883.359mil|Location2.Y=1894.359mil|Absolute=True">Width Constraint: Arc (1798.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3254.737mil|Location2.X=3267.894mil|Location1.Y=1852.588mil|Location2.Y=1863.588mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3254.737mil|Location2.X=3267.894mil|Location1.Y=1852.588mil|Location2.Y=1863.588mil|Absolute=True">Width Constraint: Arc (1798.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3249.995mil|Location2.X=3261.384mil|Location1.Y=1873.319mil|Location2.Y=1884.319mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3249.995mil|Location2.X=3261.384mil|Location1.Y=1873.319mil|Location2.Y=1884.319mil|Absolute=True">Width Constraint: Arc (1798.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3249.073mil|Location2.X=3260.073mil|Location1.Y=1869.508mil|Location2.Y=1880.508mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3249.073mil|Location2.X=3260.073mil|Location1.Y=1869.508mil|Location2.Y=1880.508mil|Absolute=True">Width Constraint: Arc (1798.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3337.356mil|Location2.X=3348.984mil|Location1.Y=1859.076mil|Location2.Y=1870.076mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3337.356mil|Location2.X=3348.984mil|Location1.Y=1859.076mil|Location2.Y=1870.076mil|Absolute=True">Width Constraint: Arc (1848.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3326.532mil|Location2.X=3340.604mil|Location1.Y=1848.252mil|Location2.Y=1859.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3326.532mil|Location2.X=3340.604mil|Location1.Y=1848.252mil|Location2.Y=1859.252mil|Absolute=True">Width Constraint: Arc (1848.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3326.532mil|Location2.X=3340.642mil|Location1.Y=1885.207mil|Location2.Y=1896.207mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3326.532mil|Location2.X=3340.642mil|Location1.Y=1885.207mil|Location2.Y=1896.207mil|Absolute=True">Width Constraint: Arc (1848.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3335.332mil|Location2.X=3347.877mil|Location1.Y=1878.1mil|Location2.Y=1889.1mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3335.332mil|Location2.X=3347.877mil|Location1.Y=1878.1mil|Location2.Y=1889.1mil|Absolute=True">Width Constraint: Arc (1848.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3338.431mil|Location2.X=3349.431mil|Location1.Y=1870.938mil|Location2.Y=1881.938mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3338.431mil|Location2.X=3349.431mil|Location1.Y=1870.938mil|Location2.Y=1881.938mil|Absolute=True">Width Constraint: Arc (1848.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3913.03mil|Location2.X=3924.658mil|Location1.Y=3958.847mil|Location2.Y=3969.847mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3913.03mil|Location2.X=3924.658mil|Location1.Y=3958.847mil|Location2.Y=3969.847mil|Absolute=True">Width Constraint: Arc (2460.63mil,1702.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3923.854mil|Location2.X=3937.925mil|Location1.Y=3969.671mil|Location2.Y=3980.671mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3923.854mil|Location2.X=3937.925mil|Location1.Y=3969.671mil|Location2.Y=3980.671mil|Absolute=True">Width Constraint: Arc (2460.63mil,1702.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3917.366mil|Location2.X=3930.523mil|Location1.Y=3937.051mil|Location2.Y=3948.051mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3917.366mil|Location2.X=3930.523mil|Location1.Y=3937.051mil|Location2.Y=3948.051mil|Absolute=True">Width Constraint: Arc (2460.63mil,1702.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3911.508mil|Location2.X=3922.508mil|Location1.Y=2770.091mil|Location2.Y=2781.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3911.508mil|Location2.X=3922.508mil|Location1.Y=2770.091mil|Location2.Y=2781.095mil|Absolute=True">Width Constraint: Arc (2460.63mil,521.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3995.65mil|Location2.X=4008.808mil|Location1.Y=3965.335mil|Location2.Y=3976.335mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3995.65mil|Location2.X=4008.808mil|Location1.Y=3965.335mil|Location2.Y=3976.335mil|Absolute=True">Width Constraint: Arc (2510.63mil,1702.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3995.65mil|Location2.X=4008.737mil|Location1.Y=3937.051mil|Location2.Y=3948.051mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3995.65mil|Location2.X=4008.737mil|Location1.Y=3937.051mil|Location2.Y=3948.051mil|Absolute=True">Width Constraint: Arc (2510.63mil,1702.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3995.65mil|Location2.X=4008.737mil|Location1.Y=2755.948mil|Location2.Y=2766.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3995.65mil|Location2.X=4008.737mil|Location1.Y=2755.948mil|Location2.Y=2766.948mil|Absolute=True">Width Constraint: Arc (2510.63mil,521.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3995.65mil|Location2.X=4008.807mil|Location1.Y=2784.233mil|Location2.Y=2795.233mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3995.65mil|Location2.X=4008.807mil|Location1.Y=2784.233mil|Location2.Y=2795.233mil|Absolute=True">Width Constraint: Arc (2510.63mil,521.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3192.354mil|Location2.X=3206.784mil|Location1.Y=4713.083mil|Location2.Y=4724.083mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3192.354mil|Location2.X=3206.784mil|Location1.Y=4713.083mil|Location2.Y=4724.083mil|Absolute=True">Width Constraint: Track (1713.976mil,2464.252mil)(1728.976mil,2464.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3192.354mil|Location2.X=3206.784mil|Location1.Y=4753.083mil|Location2.Y=4764.083mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3192.354mil|Location2.X=3206.784mil|Location1.Y=4753.083mil|Location2.Y=4764.083mil|Absolute=True">Width Constraint: Track (1713.976mil,2504.252mil)(1728.976mil,2504.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3199.854mil|Location2.X=3210.854mil|Location1.Y=4723.083mil|Location2.Y=4734.088mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3199.854mil|Location2.X=3210.854mil|Location1.Y=4723.083mil|Location2.Y=4734.088mil|Absolute=True">Width Constraint: Track (1728.976mil,2464.252mil)(1728.976mil,2484.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3199.854mil|Location2.X=3210.854mil|Location1.Y=4743.083mil|Location2.Y=4754.088mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3199.854mil|Location2.X=3210.854mil|Location1.Y=4743.083mil|Location2.Y=4754.088mil|Absolute=True">Width Constraint: Track (1728.976mil,2484.252mil)(1728.976mil,2504.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.854mil|Location2.X=3230.854mil|Location1.Y=4723.083mil|Location2.Y=4734.088mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.854mil|Location2.X=3230.854mil|Location1.Y=4723.083mil|Location2.Y=4734.088mil|Absolute=True">Width Constraint: Track (1748.976mil,2464.252mil)(1748.976mil,2484.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3227.354mil|Location2.X=3241.784mil|Location1.Y=4713.083mil|Location2.Y=4724.083mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3227.354mil|Location2.X=3241.784mil|Location1.Y=4713.083mil|Location2.Y=4724.083mil|Absolute=True">Width Constraint: Track (1748.976mil,2464.252mil)(1763.976mil,2464.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.854mil|Location2.X=3230.854mil|Location1.Y=4743.083mil|Location2.Y=4754.088mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.854mil|Location2.X=3230.854mil|Location1.Y=4743.083mil|Location2.Y=4754.088mil|Absolute=True">Width Constraint: Track (1748.976mil,2484.252mil)(1748.976mil,2504.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3227.354mil|Location2.X=3241.784mil|Location1.Y=4753.083mil|Location2.Y=4764.083mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3227.354mil|Location2.X=3241.784mil|Location1.Y=4753.083mil|Location2.Y=4764.083mil|Absolute=True">Width Constraint: Track (1748.976mil,2504.252mil)(1763.976mil,2504.252mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3276.379mil|Location2.X=3290.809mil|Location1.Y=1886.73mil|Location2.Y=1897.73mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3276.379mil|Location2.X=3290.809mil|Location1.Y=1886.73mil|Location2.Y=1897.73mil|Absolute=True">Width Constraint: Track (1798.001mil,-362.101mil)(1813.001mil,-362.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3276.379mil|Location2.X=3290.809mil|Location1.Y=1846.73mil|Location2.Y=1857.73mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3276.379mil|Location2.X=3290.809mil|Location1.Y=1846.73mil|Location2.Y=1857.73mil|Absolute=True">Width Constraint: Track (1798.001mil,-402.101mil)(1813.001mil,-402.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3283.879mil|Location2.X=3294.879mil|Location1.Y=1876.73mil|Location2.Y=1887.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3283.879mil|Location2.X=3294.879mil|Location1.Y=1876.73mil|Location2.Y=1887.735mil|Absolute=True">Width Constraint: Track (1813.001mil,-382.101mil)(1813.001mil,-362.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3283.879mil|Location2.X=3294.879mil|Location1.Y=1856.73mil|Location2.Y=1867.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3283.879mil|Location2.X=3294.879mil|Location1.Y=1856.73mil|Location2.Y=1867.735mil|Absolute=True">Width Constraint: Track (1813.001mil,-402.101mil)(1813.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3311.379mil|Location2.X=3325.809mil|Location1.Y=1886.73mil|Location2.Y=1897.73mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3311.379mil|Location2.X=3325.809mil|Location1.Y=1886.73mil|Location2.Y=1897.73mil|Absolute=True">Width Constraint: Track (1833.001mil,-362.101mil)(1848.001mil,-362.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3303.879mil|Location2.X=3314.879mil|Location1.Y=1876.73mil|Location2.Y=1887.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3303.879mil|Location2.X=3314.879mil|Location1.Y=1876.73mil|Location2.Y=1887.735mil|Absolute=True">Width Constraint: Track (1833.001mil,-382.101mil)(1833.001mil,-362.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3303.879mil|Location2.X=3314.879mil|Location1.Y=1856.73mil|Location2.Y=1867.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3303.879mil|Location2.X=3314.879mil|Location1.Y=1856.73mil|Location2.Y=1867.735mil|Absolute=True">Width Constraint: Track (1833.001mil,-402.101mil)(1833.001mil,-382.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3311.379mil|Location2.X=3325.809mil|Location1.Y=1846.73mil|Location2.Y=1857.73mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3311.379mil|Location2.X=3325.809mil|Location1.Y=1846.73mil|Location2.Y=1857.73mil|Absolute=True">Width Constraint: Track (1833.001mil,-402.101mil)(1848.001mil,-402.101mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.008mil|Location2.X=3953.438mil|Location1.Y=3931.193mil|Location2.Y=3942.193mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.008mil|Location2.X=3953.438mil|Location1.Y=3931.193mil|Location2.Y=3942.193mil|Absolute=True">Width Constraint: Track (2460.63mil,1682.362mil)(2475.63mil,1682.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.008mil|Location2.X=3953.438mil|Location1.Y=3971.193mil|Location2.Y=3982.193mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.008mil|Location2.X=3953.438mil|Location1.Y=3971.193mil|Location2.Y=3982.193mil|Absolute=True">Width Constraint: Track (2460.63mil,1722.362mil)(2475.63mil,1722.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.008mil|Location2.X=3953.438mil|Location1.Y=2750.091mil|Location2.Y=2761.091mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.008mil|Location2.X=3953.438mil|Location1.Y=2750.091mil|Location2.Y=2761.091mil|Absolute=True">Width Constraint: Track (2460.63mil,501.26mil)(2475.63mil,501.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.008mil|Location2.X=3953.438mil|Location1.Y=2790.091mil|Location2.Y=2801.091mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.008mil|Location2.X=3953.438mil|Location1.Y=2790.091mil|Location2.Y=2801.091mil|Absolute=True">Width Constraint: Track (2460.63mil,541.26mil)(2475.63mil,541.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3946.508mil|Location2.X=3957.508mil|Location1.Y=3941.193mil|Location2.Y=3952.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3946.508mil|Location2.X=3957.508mil|Location1.Y=3941.193mil|Location2.Y=3952.198mil|Absolute=True">Width Constraint: Track (2475.63mil,1682.362mil)(2475.63mil,1702.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3946.508mil|Location2.X=3957.508mil|Location1.Y=3961.193mil|Location2.Y=3972.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3946.508mil|Location2.X=3957.508mil|Location1.Y=3961.193mil|Location2.Y=3972.198mil|Absolute=True">Width Constraint: Track (2475.63mil,1702.362mil)(2475.63mil,1722.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3946.508mil|Location2.X=3957.508mil|Location1.Y=2760.091mil|Location2.Y=2771.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3946.508mil|Location2.X=3957.508mil|Location1.Y=2760.091mil|Location2.Y=2771.095mil|Absolute=True">Width Constraint: Track (2475.63mil,501.26mil)(2475.63mil,521.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3946.508mil|Location2.X=3957.508mil|Location1.Y=2780.091mil|Location2.Y=2791.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3946.508mil|Location2.X=3957.508mil|Location1.Y=2780.091mil|Location2.Y=2791.095mil|Absolute=True">Width Constraint: Track (2475.63mil,521.26mil)(2475.63mil,541.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3966.508mil|Location2.X=3977.508mil|Location1.Y=3941.193mil|Location2.Y=3952.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3966.508mil|Location2.X=3977.508mil|Location1.Y=3941.193mil|Location2.Y=3952.198mil|Absolute=True">Width Constraint: Track (2495.63mil,1682.362mil)(2495.63mil,1702.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3974.008mil|Location2.X=3988.438mil|Location1.Y=3931.193mil|Location2.Y=3942.193mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3974.008mil|Location2.X=3988.438mil|Location1.Y=3931.193mil|Location2.Y=3942.193mil|Absolute=True">Width Constraint: Track (2495.63mil,1682.362mil)(2510.63mil,1682.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3966.508mil|Location2.X=3977.508mil|Location1.Y=3961.193mil|Location2.Y=3972.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3966.508mil|Location2.X=3977.508mil|Location1.Y=3961.193mil|Location2.Y=3972.198mil|Absolute=True">Width Constraint: Track (2495.63mil,1702.362mil)(2495.63mil,1722.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3974.008mil|Location2.X=3988.438mil|Location1.Y=3971.193mil|Location2.Y=3982.193mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3974.008mil|Location2.X=3988.438mil|Location1.Y=3971.193mil|Location2.Y=3982.193mil|Absolute=True">Width Constraint: Track (2495.63mil,1722.362mil)(2510.63mil,1722.362mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3966.508mil|Location2.X=3977.508mil|Location1.Y=2760.091mil|Location2.Y=2771.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3966.508mil|Location2.X=3977.508mil|Location1.Y=2760.091mil|Location2.Y=2771.095mil|Absolute=True">Width Constraint: Track (2495.63mil,501.26mil)(2495.63mil,521.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3974.008mil|Location2.X=3988.438mil|Location1.Y=2750.091mil|Location2.Y=2761.091mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3974.008mil|Location2.X=3988.438mil|Location1.Y=2750.091mil|Location2.Y=2761.091mil|Absolute=True">Width Constraint: Track (2495.63mil,501.26mil)(2510.63mil,501.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3966.508mil|Location2.X=3977.508mil|Location1.Y=2780.091mil|Location2.Y=2791.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3966.508mil|Location2.X=3977.508mil|Location1.Y=2780.091mil|Location2.Y=2791.095mil|Absolute=True">Width Constraint: Track (2495.63mil,521.26mil)(2495.63mil,541.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3974.008mil|Location2.X=3988.438mil|Location1.Y=2790.091mil|Location2.Y=2801.091mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3974.008mil|Location2.X=3988.438mil|Location1.Y=2790.091mil|Location2.Y=2801.091mil|Absolute=True">Width Constraint: Track (2495.63mil,541.26mil)(2510.63mil,541.26mil) on Bottom Layer Actual Width = 8mil, Target Width = 10mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDPB0H4FPAY3GMNKSD3PWG5WJEKFYRHDPXCEK2RJZ5P4T0FUGI2HC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1141.107mil|Location2.X=1260.467mil|Location1.Y=1141.107mil|Location2.Y=1260.467mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1141.107mil|Location2.X=1260.467mil|Location1.Y=1141.107mil|Location2.Y=1260.467mil|Absolute=True">Hole Size Constraint: (118.11mil &gt; 100mil) Pad Free-Q(-275.591mil,-1053.543mil) on Multi-Layer Actual Hole Size = 118.11mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1141.107mil|Location2.X=1260.467mil|Location1.Y=4841.895mil|Location2.Y=4961.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1141.107mil|Location2.X=1260.467mil|Location1.Y=4841.895mil|Location2.Y=4961.255mil|Absolute=True">Hole Size Constraint: (118.11mil &gt; 100mil) Pad Free-Q(-275.591mil,2647.244mil) on Multi-Layer Actual Hole Size = 118.11mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.895mil|Location2.X=4961.255mil|Location1.Y=1141.107mil|Location2.Y=1260.467mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.895mil|Location2.X=4961.255mil|Location1.Y=1141.107mil|Location2.Y=1260.467mil|Absolute=True">Hole Size Constraint: (118.11mil &gt; 100mil) Pad Free-Q(3425.197mil,-1053.543mil) on Multi-Layer Actual Hole Size = 118.11mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.895mil|Location2.X=4961.255mil|Location1.Y=4841.895mil|Location2.Y=4961.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.895mil|Location2.X=4961.255mil|Location1.Y=4841.895mil|Location2.Y=4961.255mil|Absolute=True">Hole Size Constraint: (118.11mil &gt; 100mil) Pad Free-Q(3425.197mil,2647.244mil) on Multi-Layer Actual Hole Size = 118.11mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDVO344VTYXNJIOENZ31O1HOZEROJCILVUJ2JWTLGRMJL1LFLUOXTC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3192.229mil|Location2.X=3203.479mil|Location1.Y=4712.958mil|Location2.Y=4724.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3192.229mil|Location2.X=3203.479mil|Location1.Y=4712.958mil|Location2.Y=4724.208mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7mil &lt; 10mil) Between Arc (1713.976mil,2484.252mil) on Bottom Solder And Track (1728.976mil,2464.252mil)(1728.976mil,2504.252mil) on Bottom Solder [Bottom Solder] Mask Sliver [7mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3227.229mil|Location2.X=3238.479mil|Location1.Y=4712.958mil|Location2.Y=4724.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3227.229mil|Location2.X=3238.479mil|Location1.Y=4712.958mil|Location2.Y=4724.208mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7mil &lt; 10mil) Between Arc (1763.976mil,2484.252mil) on Bottom Solder And Track (1748.976mil,2464.252mil)(1748.976mil,2504.252mil) on Bottom Solder [Bottom Solder] Mask Sliver [7mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3276.254mil|Location2.X=3287.504mil|Location1.Y=1846.605mil|Location2.Y=1857.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3276.254mil|Location2.X=3287.504mil|Location1.Y=1846.605mil|Location2.Y=1857.855mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7mil &lt; 10mil) Between Arc (1798.001mil,-382.101mil) on Bottom Solder And Track (1813.001mil,-402.101mil)(1813.001mil,-362.101mil) on Bottom Solder [Bottom Solder] Mask Sliver [7mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3311.254mil|Location2.X=3322.504mil|Location1.Y=1846.605mil|Location2.Y=1857.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3311.254mil|Location2.X=3322.504mil|Location1.Y=1846.605mil|Location2.Y=1857.855mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7mil &lt; 10mil) Between Arc (1848.001mil,-382.101mil) on Bottom Solder And Track (1833.001mil,-402.101mil)(1833.001mil,-362.101mil) on Bottom Solder [Bottom Solder] Mask Sliver [7mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3938.883mil|Location2.X=3950.133mil|Location1.Y=3931.068mil|Location2.Y=3942.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3938.883mil|Location2.X=3950.133mil|Location1.Y=3931.068mil|Location2.Y=3942.318mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7mil &lt; 10mil) Between Arc (2460.63mil,1702.362mil) on Bottom Solder And Track (2475.63mil,1682.362mil)(2475.63mil,1722.362mil) on Bottom Solder [Bottom Solder] Mask Sliver [7mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3938.883mil|Location2.X=3950.133mil|Location1.Y=2749.966mil|Location2.Y=2761.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3938.883mil|Location2.X=3950.133mil|Location1.Y=2749.966mil|Location2.Y=2761.216mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7mil &lt; 10mil) Between Arc (2460.63mil,521.26mil) on Bottom Solder And Track (2475.63mil,501.26mil)(2475.63mil,541.26mil) on Bottom Solder [Bottom Solder] Mask Sliver [7mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3973.883mil|Location2.X=3985.133mil|Location1.Y=3931.068mil|Location2.Y=3942.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3973.883mil|Location2.X=3985.133mil|Location1.Y=3931.068mil|Location2.Y=3942.318mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7mil &lt; 10mil) Between Arc (2510.63mil,1702.362mil) on Bottom Solder And Track (2495.63mil,1682.362mil)(2495.63mil,1722.362mil) on Bottom Solder [Bottom Solder] Mask Sliver [7mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3973.883mil|Location2.X=3985.133mil|Location1.Y=2749.966mil|Location2.Y=2761.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3973.883mil|Location2.X=3985.133mil|Location1.Y=2749.966mil|Location2.Y=2761.216mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7mil &lt; 10mil) Between Arc (2510.63mil,521.26mil) on Bottom Solder And Track (2495.63mil,501.26mil)(2495.63mil,541.26mil) on Bottom Solder [Bottom Solder] Mask Sliver [7mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDREDOZVOANCYVHAHYL2HFWDF5RD2CJUPPMIG2AAPKLWOJIMX4HG4C"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=2251.433mil|Location2.Y=2262.683mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=2251.433mil|Location2.Y=2262.683mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.338mil &lt; 10mil) Between Arc (-143.701mil,0mil) on Top Overlay And Pad JP2-2(0mil,0mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [9.338mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=3545.133mil|Location2.Y=3556.383mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=3545.133mil|Location2.Y=3556.383mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.338mil &lt; 10mil) Between Arc (-143.701mil,1293.701mil) on Top Overlay And Pad JP1-2(0mil,1293.701mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [9.338mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=3845.133mil|Location2.Y=3856.383mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=3845.133mil|Location2.Y=3856.383mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.338mil &lt; 10mil) Between Arc (-143.701mil,1593.701mil) on Top Overlay And Pad JP1-3(0mil,1593.701mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [9.338mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=4145.133mil|Location2.Y=4156.383mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=4145.133mil|Location2.Y=4156.383mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.338mil &lt; 10mil) Between Arc (-143.701mil,1893.701mil) on Top Overlay And Pad JP1-4(0mil,1893.701mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [9.338mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.108mil|Location2.X=1428.358mil|Location1.Y=1948.706mil|Location2.Y=1959.956mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.108mil|Location2.X=1428.358mil|Location1.Y=1948.706mil|Location2.Y=1959.956mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.866mil &lt; 10mil) Between Arc (-143.701mil,-300mil) on Top Overlay And Pad JP2-1(0mil,-300mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [8.866mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=2551.433mil|Location2.Y=2562.683mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=2551.433mil|Location2.Y=2562.683mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.338mil &lt; 10mil) Between Arc (-143.701mil,300mil) on Top Overlay And Pad JP2-3(0mil,300mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [9.338mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=2851.433mil|Location2.Y=2862.683mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.303mil|Location2.X=1428.553mil|Location1.Y=2851.433mil|Location2.Y=2862.683mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.338mil &lt; 10mil) Between Arc (-143.701mil,600mil) on Top Overlay And Pad JP2-4(0mil,600mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [9.338mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.108mil|Location2.X=1428.358mil|Location1.Y=3242.407mil|Location2.Y=3253.657mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.108mil|Location2.X=1428.358mil|Location1.Y=3242.407mil|Location2.Y=3253.657mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.866mil &lt; 10mil) Between Arc (-143.701mil,993.701mil) on Top Overlay And Pad JP1-1(0mil,993.701mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [8.866mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.012mil|Location2.X=3507.262mil|Location1.Y=4812.937mil|Location2.Y=4824.187mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.012mil|Location2.X=3507.262mil|Location1.Y=4812.937mil|Location2.Y=4824.187mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad C1-1(2065.354mil,2568.504mil) on Multi-Layer And Track (2015.354mil,2518.504mil)(2015.354mil,2618.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3531.834mil|Location2.X=3543.084mil|Location1.Y=4777.114mil|Location2.Y=4788.364mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3531.834mil|Location2.X=3543.084mil|Location1.Y=4777.114mil|Location2.Y=4788.364mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad C1-1(2065.354mil,2568.504mil) on Multi-Layer And Track (2015.354mil,2518.504mil)(2315.354mil,2518.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3531.834mil|Location2.X=3543.084mil|Location1.Y=4857.305mil|Location2.Y=4868.555mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3531.834mil|Location2.X=3543.084mil|Location1.Y=4857.305mil|Location2.Y=4868.555mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad C1-1(2065.354mil,2568.504mil) on Multi-Layer And Track (2015.354mil,2618.504mil)(2315.354mil,2618.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3566.874mil|Location2.X=3578.124mil|Location1.Y=4817.21mil|Location2.Y=4828.46mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3566.874mil|Location2.X=3578.124mil|Location1.Y=4817.21mil|Location2.Y=4828.46mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.466mil &lt; 10mil) Between Pad C1-1(2065.354mil,2568.504mil) on Multi-Layer And Track (2105.354mil,2568.504mil)(2150.354mil,2568.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.466mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3731.834mil|Location2.X=3743.084mil|Location1.Y=4777.114mil|Location2.Y=4788.364mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3731.834mil|Location2.X=3743.084mil|Location1.Y=4777.114mil|Location2.Y=4788.364mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad C1-2(2265.354mil,2568.504mil) on Multi-Layer And Track (2015.354mil,2518.504mil)(2315.354mil,2518.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3731.834mil|Location2.X=3743.084mil|Location1.Y=4857.305mil|Location2.Y=4868.555mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3731.834mil|Location2.X=3743.084mil|Location1.Y=4857.305mil|Location2.Y=4868.555mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad C1-2(2265.354mil,2568.504mil) on Multi-Layer And Track (2015.354mil,2618.504mil)(2315.354mil,2618.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3704.655mil|Location2.X=3715.905mil|Location1.Y=4817.21mil|Location2.Y=4828.46mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3704.655mil|Location2.X=3715.905mil|Location1.Y=4817.21mil|Location2.Y=4828.46mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.095mil &lt; 10mil) Between Pad C1-2(2265.354mil,2568.504mil) on Multi-Layer And Track (2180.354mil,2568.504mil)(2225.354mil,2568.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.095mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3776.3mil|Location2.X=3787.55mil|Location1.Y=4815.069mil|Location2.Y=4826.319mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3776.3mil|Location2.X=3787.55mil|Location1.Y=4815.069mil|Location2.Y=4826.319mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.616mil &lt; 10mil) Between Pad C1-2(2265.354mil,2568.504mil) on Multi-Layer And Track (2315.354mil,2518.504mil)(2315.354mil,2618.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.616mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4726.659mil|Location2.X=4737.909mil|Location1.Y=1623.706mil|Location2.Y=1634.956mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4726.659mil|Location2.X=4737.909mil|Location1.Y=1623.706mil|Location2.Y=1634.956mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (6.693mil &lt; 10mil) Between Pad J1-1(3287.402mil,-659.842mil) on Multi-Layer And Track (3155.402mil,-609.842mil)(3327.402mil,-609.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [6.693mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.312mil|Location2.X=4734.562mil|Location1.Y=1557.367mil|Location2.Y=1568.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.312mil|Location2.X=4734.562mil|Location1.Y=1557.367mil|Location2.Y=1568.617mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (6.693mil &lt; 10mil) Between Pad J1-1(3287.402mil,-659.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [6.693mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.475mil|Location2.X=4663.725mil|Location1.Y=1954.272mil|Location2.Y=1965.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.475mil|Location2.X=4663.725mil|Location1.Y=1954.272mil|Location2.Y=1965.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.194mil &lt; 10mil) Between Pad J1-10(3187.402mil,-259.842mil) on Multi-Layer And Track (3155.402mil,-309.842mil)(3327.402mil,-309.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [7.194mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1979.489mil|Location2.Y=1990.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1979.489mil|Location2.Y=1990.739mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.105mil &lt; 10mil) Between Pad J1-10(3187.402mil,-259.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [8.105mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4645.222mil|Location2.X=4656.472mil|Location1.Y=1622.325mil|Location2.Y=1633.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4645.222mil|Location2.X=4656.472mil|Location1.Y=1622.325mil|Location2.Y=1633.575mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.455mil &lt; 10mil) Between Pad J1-2(3187.402mil,-659.842mil) on Multi-Layer And Track (3155.402mil,-609.842mil)(3327.402mil,-609.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [9.455mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1579.489mil|Location2.Y=1590.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1579.489mil|Location2.Y=1590.739mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.105mil &lt; 10mil) Between Pad J1-2(3187.402mil,-659.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [8.105mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4745.222mil|Location2.X=4756.472mil|Location1.Y=1722.325mil|Location2.Y=1733.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4745.222mil|Location2.X=4756.472mil|Location1.Y=1722.325mil|Location2.Y=1733.575mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.455mil &lt; 10mil) Between Pad J1-3(3287.402mil,-559.842mil) on Multi-Layer And Track (3155.402mil,-509.842mil)(3327.402mil,-509.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [9.455mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4752.475mil|Location2.X=4763.725mil|Location1.Y=1654.272mil|Location2.Y=1665.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4752.475mil|Location2.X=4763.725mil|Location1.Y=1654.272mil|Location2.Y=1665.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.195mil &lt; 10mil) Between Pad J1-3(3287.402mil,-559.842mil) on Multi-Layer And Track (3155.402mil,-609.842mil)(3327.402mil,-609.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [7.195mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.42mil|Location2.X=4734.67mil|Location1.Y=1692.661mil|Location2.Y=1703.911mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.42mil|Location2.X=4734.67mil|Location1.Y=1692.661mil|Location2.Y=1703.911mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (6.908mil &lt; 10mil) Between Pad J1-3(3287.402mil,-559.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [6.908mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4645.222mil|Location2.X=4656.472mil|Location1.Y=1722.325mil|Location2.Y=1733.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4645.222mil|Location2.X=4656.472mil|Location1.Y=1722.325mil|Location2.Y=1733.575mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.455mil &lt; 10mil) Between Pad J1-4(3187.402mil,-559.842mil) on Multi-Layer And Track (3155.402mil,-509.842mil)(3327.402mil,-509.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [9.455mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.475mil|Location2.X=4663.725mil|Location1.Y=1654.272mil|Location2.Y=1665.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.475mil|Location2.X=4663.725mil|Location1.Y=1654.272mil|Location2.Y=1665.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.195mil &lt; 10mil) Between Pad J1-4(3187.402mil,-559.842mil) on Multi-Layer And Track (3155.402mil,-609.842mil)(3327.402mil,-609.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [7.195mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1679.489mil|Location2.Y=1690.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1679.489mil|Location2.Y=1690.739mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.105mil &lt; 10mil) Between Pad J1-4(3187.402mil,-559.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [8.105mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4745.222mil|Location2.X=4756.472mil|Location1.Y=1822.325mil|Location2.Y=1833.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4745.222mil|Location2.X=4756.472mil|Location1.Y=1822.325mil|Location2.Y=1833.575mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.455mil &lt; 10mil) Between Pad J1-5(3287.402mil,-459.842mil) on Multi-Layer And Track (3155.402mil,-409.842mil)(3327.402mil,-409.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [9.455mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4752.475mil|Location2.X=4763.725mil|Location1.Y=1754.272mil|Location2.Y=1765.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4752.475mil|Location2.X=4763.725mil|Location1.Y=1754.272mil|Location2.Y=1765.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.195mil &lt; 10mil) Between Pad J1-5(3287.402mil,-459.842mil) on Multi-Layer And Track (3155.402mil,-509.842mil)(3327.402mil,-509.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [7.195mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.42mil|Location2.X=4734.67mil|Location1.Y=1792.661mil|Location2.Y=1803.911mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.42mil|Location2.X=4734.67mil|Location1.Y=1792.661mil|Location2.Y=1803.911mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (6.908mil &lt; 10mil) Between Pad J1-5(3287.402mil,-459.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [6.908mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4645.222mil|Location2.X=4656.472mil|Location1.Y=1822.325mil|Location2.Y=1833.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4645.222mil|Location2.X=4656.472mil|Location1.Y=1822.325mil|Location2.Y=1833.575mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.455mil &lt; 10mil) Between Pad J1-6(3187.402mil,-459.842mil) on Multi-Layer And Track (3155.402mil,-409.842mil)(3327.402mil,-409.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [9.455mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.475mil|Location2.X=4663.725mil|Location1.Y=1754.272mil|Location2.Y=1765.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.475mil|Location2.X=4663.725mil|Location1.Y=1754.272mil|Location2.Y=1765.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.195mil &lt; 10mil) Between Pad J1-6(3187.402mil,-459.842mil) on Multi-Layer And Track (3155.402mil,-509.842mil)(3327.402mil,-509.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [7.195mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1779.489mil|Location2.Y=1790.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1779.489mil|Location2.Y=1790.739mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.105mil &lt; 10mil) Between Pad J1-6(3187.402mil,-459.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [8.105mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4745.222mil|Location2.X=4756.472mil|Location1.Y=1922.325mil|Location2.Y=1933.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4745.222mil|Location2.X=4756.472mil|Location1.Y=1922.325mil|Location2.Y=1933.575mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.455mil &lt; 10mil) Between Pad J1-7(3287.402mil,-359.842mil) on Multi-Layer And Track (3155.402mil,-309.842mil)(3327.402mil,-309.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [9.455mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4752.475mil|Location2.X=4763.725mil|Location1.Y=1854.272mil|Location2.Y=1865.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4752.475mil|Location2.X=4763.725mil|Location1.Y=1854.272mil|Location2.Y=1865.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.195mil &lt; 10mil) Between Pad J1-7(3287.402mil,-359.842mil) on Multi-Layer And Track (3155.402mil,-409.842mil)(3327.402mil,-409.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [7.195mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.42mil|Location2.X=4734.67mil|Location1.Y=1892.661mil|Location2.Y=1903.911mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.42mil|Location2.X=4734.67mil|Location1.Y=1892.661mil|Location2.Y=1903.911mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (6.908mil &lt; 10mil) Between Pad J1-7(3287.402mil,-359.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [6.908mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4645.222mil|Location2.X=4656.472mil|Location1.Y=1922.325mil|Location2.Y=1933.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4645.222mil|Location2.X=4656.472mil|Location1.Y=1922.325mil|Location2.Y=1933.575mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.455mil &lt; 10mil) Between Pad J1-8(3187.402mil,-359.842mil) on Multi-Layer And Track (3155.402mil,-309.842mil)(3327.402mil,-309.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [9.455mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.475mil|Location2.X=4663.725mil|Location1.Y=1854.272mil|Location2.Y=1865.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.475mil|Location2.X=4663.725mil|Location1.Y=1854.272mil|Location2.Y=1865.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.195mil &lt; 10mil) Between Pad J1-8(3187.402mil,-359.842mil) on Multi-Layer And Track (3155.402mil,-409.842mil)(3327.402mil,-409.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [7.195mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1879.489mil|Location2.Y=1890.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4692.291mil|Location2.X=4703.541mil|Location1.Y=1879.489mil|Location2.Y=1890.739mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.105mil &lt; 10mil) Between Pad J1-8(3187.402mil,-359.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [8.105mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4752.475mil|Location2.X=4763.725mil|Location1.Y=1954.272mil|Location2.Y=1965.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4752.475mil|Location2.X=4763.725mil|Location1.Y=1954.272mil|Location2.Y=1965.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.194mil &lt; 10mil) Between Pad J1-9(3287.402mil,-259.842mil) on Multi-Layer And Track (3155.402mil,-309.842mil)(3327.402mil,-309.842mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [7.194mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.42mil|Location2.X=4734.67mil|Location1.Y=1992.661mil|Location2.Y=2003.911mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4723.42mil|Location2.X=4734.67mil|Location1.Y=1992.661mil|Location2.Y=2003.911mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (6.908mil &lt; 10mil) Between Pad J1-9(3287.402mil,-259.842mil) on Multi-Layer And Track (3237.402mil,-700.842mil)(3237.402mil,-226.772mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [6.908mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4289.651mil|Location2.X=4300.901mil|Location1.Y=1514.119mil|Location2.Y=1525.369mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4289.651mil|Location2.X=4300.901mil|Location1.Y=1514.119mil|Location2.Y=1525.369mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.567mil &lt; 10mil) Between Pad POW in-1(2854.331mil,-774.803mil) on Multi-Layer And Track (2714.331mil,-724.803mil)(2954.331mil,-724.803mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.567mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4365.3mil|Location2.X=4376.55mil|Location1.Y=1438.47mil|Location2.Y=1449.72mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4365.3mil|Location2.X=4376.55mil|Location1.Y=1438.47mil|Location2.Y=1449.72mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.567mil &lt; 10mil) Between Pad POW in-1(2854.331mil,-774.803mil) on Multi-Layer And Track (2904.331mil,-1129.803mil)(2904.331mil,-724.803mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.567mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3403.824mil|Location2.X=3415.074mil|Location1.Y=1515.694mil|Location2.Y=1526.944mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3403.824mil|Location2.X=3415.074mil|Location1.Y=1515.694mil|Location2.Y=1526.944mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.567mil &lt; 10mil) Between Pad POW in1-1(1968.504mil,-773.228mil) on Multi-Layer And Track (1828.504mil,-723.228mil)(2068.504mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.567mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3479.474mil|Location2.X=3490.724mil|Location1.Y=1440.044mil|Location2.Y=1451.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3479.474mil|Location2.X=3490.724mil|Location1.Y=1440.044mil|Location2.Y=1451.294mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.567mil &lt; 10mil) Between Pad POW in1-1(1968.504mil,-773.228mil) on Multi-Layer And Track (2018.504mil,-1128.228mil)(2018.504mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.567mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3479.352mil|Location2.X=3490.602mil|Location1.Y=1371.205mil|Location2.Y=1382.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3479.352mil|Location2.X=3490.602mil|Location1.Y=1371.205mil|Location2.Y=1382.455mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in1-2(1968.504mil,-873.228mil) on Multi-Layer And Track (2018.504mil,-1128.228mil)(2018.504mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3479.352mil|Location2.X=3490.602mil|Location1.Y=1271.205mil|Location2.Y=1282.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3479.352mil|Location2.X=3490.602mil|Location1.Y=1271.205mil|Location2.Y=1282.455mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in1-3(1968.504mil,-973.228mil) on Multi-Layer And Track (2018.504mil,-1128.228mil)(2018.504mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3479.352mil|Location2.X=3490.602mil|Location1.Y=1171.205mil|Location2.Y=1182.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3479.352mil|Location2.X=3490.602mil|Location1.Y=1171.205mil|Location2.Y=1182.455mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in1-4(1968.504mil,-1073.228mil) on Multi-Layer And Track (2018.504mil,-1128.228mil)(2018.504mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4365.179mil|Location2.X=4376.429mil|Location1.Y=1369.63mil|Location2.Y=1380.88mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4365.179mil|Location2.X=4376.429mil|Location1.Y=1369.63mil|Location2.Y=1380.88mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in-2(2854.331mil,-874.803mil) on Multi-Layer And Track (2904.331mil,-1129.803mil)(2904.331mil,-724.803mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3699.099mil|Location2.X=3710.349mil|Location1.Y=1515.694mil|Location2.Y=1526.944mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3699.099mil|Location2.X=3710.349mil|Location1.Y=1515.694mil|Location2.Y=1526.944mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.567mil &lt; 10mil) Between Pad POW in2-1(2263.78mil,-773.228mil) on Multi-Layer And Track (2123.78mil,-723.228mil)(2363.78mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.567mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.749mil|Location2.X=3785.999mil|Location1.Y=1440.044mil|Location2.Y=1451.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.749mil|Location2.X=3785.999mil|Location1.Y=1440.044mil|Location2.Y=1451.294mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.567mil &lt; 10mil) Between Pad POW in2-1(2263.78mil,-773.228mil) on Multi-Layer And Track (2313.78mil,-1128.228mil)(2313.78mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.567mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.628mil|Location2.X=3785.878mil|Location1.Y=1371.205mil|Location2.Y=1382.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.628mil|Location2.X=3785.878mil|Location1.Y=1371.205mil|Location2.Y=1382.455mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in2-2(2263.78mil,-873.228mil) on Multi-Layer And Track (2313.78mil,-1128.228mil)(2313.78mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.628mil|Location2.X=3785.878mil|Location1.Y=1271.205mil|Location2.Y=1282.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.628mil|Location2.X=3785.878mil|Location1.Y=1271.205mil|Location2.Y=1282.455mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in2-3(2263.78mil,-973.228mil) on Multi-Layer And Track (2313.78mil,-1128.228mil)(2313.78mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.628mil|Location2.X=3785.878mil|Location1.Y=1171.205mil|Location2.Y=1182.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.628mil|Location2.X=3785.878mil|Location1.Y=1171.205mil|Location2.Y=1182.455mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in2-4(2263.78mil,-1073.228mil) on Multi-Layer And Track (2313.78mil,-1128.228mil)(2313.78mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4365.179mil|Location2.X=4376.429mil|Location1.Y=1269.63mil|Location2.Y=1280.88mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4365.179mil|Location2.X=4376.429mil|Location1.Y=1269.63mil|Location2.Y=1280.88mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in-3(2854.331mil,-974.803mil) on Multi-Layer And Track (2904.331mil,-1129.803mil)(2904.331mil,-724.803mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4365.179mil|Location2.X=4376.429mil|Location1.Y=1169.63mil|Location2.Y=1180.88mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4365.179mil|Location2.X=4376.429mil|Location1.Y=1169.63mil|Location2.Y=1180.88mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in-4(2854.331mil,-1074.803mil) on Multi-Layer And Track (2904.331mil,-1129.803mil)(2904.331mil,-724.803mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3994.375mil|Location2.X=4005.625mil|Location1.Y=1515.694mil|Location2.Y=1526.944mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3994.375mil|Location2.X=4005.625mil|Location1.Y=1515.694mil|Location2.Y=1526.944mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.567mil &lt; 10mil) Between Pad POW in4-1(2559.055mil,-773.228mil) on Multi-Layer And Track (2419.055mil,-723.228mil)(2659.055mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.567mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4070.025mil|Location2.X=4081.275mil|Location1.Y=1440.044mil|Location2.Y=1451.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4070.025mil|Location2.X=4081.275mil|Location1.Y=1440.044mil|Location2.Y=1451.294mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.567mil &lt; 10mil) Between Pad POW in4-1(2559.055mil,-773.228mil) on Multi-Layer And Track (2609.055mil,-1128.228mil)(2609.055mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.567mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4069.903mil|Location2.X=4081.153mil|Location1.Y=1371.205mil|Location2.Y=1382.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4069.903mil|Location2.X=4081.153mil|Location1.Y=1371.205mil|Location2.Y=1382.455mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in4-2(2559.055mil,-873.228mil) on Multi-Layer And Track (2609.055mil,-1128.228mil)(2609.055mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4069.903mil|Location2.X=4081.153mil|Location1.Y=1271.205mil|Location2.Y=1282.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4069.903mil|Location2.X=4081.153mil|Location1.Y=1271.205mil|Location2.Y=1282.455mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in4-3(2559.055mil,-973.228mil) on Multi-Layer And Track (2609.055mil,-1128.228mil)(2609.055mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4069.903mil|Location2.X=4081.153mil|Location1.Y=1171.205mil|Location2.Y=1182.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4069.903mil|Location2.X=4081.153mil|Location1.Y=1171.205mil|Location2.Y=1182.455mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.809mil &lt; 10mil) Between Pad POW in4-4(2559.055mil,-1073.228mil) on Multi-Layer And Track (2609.055mil,-1128.228mil)(2609.055mil,-723.228mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.809mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.823mil|Location2.X=2162.49mil|Location1.Y=3803.791mil|Location2.Y=3811.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.823mil|Location2.X=2162.49mil|Location1.Y=3803.791mil|Location2.Y=3811.457mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R10-1(712.452mil,1578.611mil) on Multi-Layer And Track (609.91mil,1492.569mil)(688.324mil,1558.366mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3492.012mil|Location2.X=3503.262mil|Location1.Y=4453.43mil|Location2.Y=4464.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3492.012mil|Location2.X=3503.262mil|Location1.Y=4453.43mil|Location2.Y=4464.68mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.361mil &lt; 10mil) Between Pad R1-1(2047.244mil,2204.724mil) on Multi-Layer And Track (1990.079mil,2204.724mil)(2015.079mil,2204.724mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.361mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.414mil|Location2.X=2438.08mil|Location1.Y=3803.791mil|Location2.Y=3811.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.414mil|Location2.X=2438.08mil|Location1.Y=3803.791mil|Location2.Y=3811.457mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R11-1(988.042mil,1578.611mil) on Multi-Layer And Track (885.501mil,1492.569mil)(963.915mil,1558.366mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3189.042mil|Location2.X=3200.292mil|Location1.Y=4453.43mil|Location2.Y=4464.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3189.042mil|Location2.X=3200.292mil|Location1.Y=4453.43mil|Location2.Y=4464.68mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.579mil &lt; 10mil) Between Pad R1-2(1692.913mil,2204.724mil) on Multi-Layer And Track (1725.079mil,2204.724mil)(1750.079mil,2204.724mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.579mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2706.004mil|Location2.X=2713.671mil|Location1.Y=3803.791mil|Location2.Y=3811.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2706.004mil|Location2.X=2713.671mil|Location1.Y=3803.791mil|Location2.Y=3811.457mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R12-1(1263.633mil,1578.611mil) on Multi-Layer And Track (1161.091mil,1492.569mil)(1239.505mil,1558.366mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.595mil|Location2.X=2989.261mil|Location1.Y=3331.349mil|Location2.Y=3339.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.595mil|Location2.X=2989.261mil|Location1.Y=3331.349mil|Location2.Y=3339.016mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R13-1(1539.223mil,1106.17mil) on Multi-Layer And Track (1436.682mil,1020.128mil)(1515.096mil,1085.925mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.823mil|Location2.X=2162.49mil|Location1.Y=3331.349mil|Location2.Y=3339.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.823mil|Location2.X=2162.49mil|Location1.Y=3331.349mil|Location2.Y=3339.016mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R14-1(712.452mil,1106.17mil) on Multi-Layer And Track (609.91mil,1020.128mil)(688.324mil,1085.925mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.414mil|Location2.X=2438.08mil|Location1.Y=3331.349mil|Location2.Y=3339.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.414mil|Location2.X=2438.08mil|Location1.Y=3331.349mil|Location2.Y=3339.016mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R15-1(988.042mil,1106.17mil) on Multi-Layer And Track (885.501mil,1020.128mil)(963.915mil,1085.925mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2706.004mil|Location2.X=2713.671mil|Location1.Y=3331.349mil|Location2.Y=3339.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2706.004mil|Location2.X=2713.671mil|Location1.Y=3331.349mil|Location2.Y=3339.016mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R16-1(1263.633mil,1106.17mil) on Multi-Layer And Track (1161.091mil,1020.128mil)(1239.505mil,1085.925mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.823mil|Location2.X=2162.49mil|Location1.Y=2763.346mil|Location2.Y=2771.013mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.823mil|Location2.X=2162.49mil|Location1.Y=2763.346mil|Location2.Y=2771.013mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R17-1(712.452mil,487.531mil) on Multi-Layer And Track (609.91mil,573.573mil)(688.324mil,507.776mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.595mil|Location2.X=2989.261mil|Location1.Y=2763.346mil|Location2.Y=2771.013mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.595mil|Location2.X=2989.261mil|Location1.Y=2763.346mil|Location2.Y=2771.013mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R18-1(1539.223mil,487.531mil) on Multi-Layer And Track (1436.682mil,573.573mil)(1515.096mil,507.776mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2706.004mil|Location2.X=2713.671mil|Location1.Y=2763.346mil|Location2.Y=2771.013mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2706.004mil|Location2.X=2713.671mil|Location1.Y=2763.346mil|Location2.Y=2771.013mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R19-1(1263.633mil,487.531mil) on Multi-Layer And Track (1161.091mil,573.573mil)(1239.505mil,507.776mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.414mil|Location2.X=2438.08mil|Location1.Y=2763.346mil|Location2.Y=2771.013mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.414mil|Location2.X=2438.08mil|Location1.Y=2763.346mil|Location2.Y=2771.013mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R20-1(988.042mil,487.531mil) on Multi-Layer And Track (885.501mil,573.573mil)(963.915mil,507.776mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4751.855mil|Location2.X=4763.105mil|Location1.Y=3675.477mil|Location2.Y=3686.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4751.855mil|Location2.X=4763.105mil|Location1.Y=3675.477mil|Location2.Y=3686.727mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.361mil &lt; 10mil) Between Pad R2-1(3307.087mil,1426.772mil) on Multi-Layer And Track (3249.921mil,1426.772mil)(3274.921mil,1426.772mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.361mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.823mil|Location2.X=2162.49mil|Location1.Y=2290.905mil|Location2.Y=2298.572mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2154.823mil|Location2.X=2162.49mil|Location1.Y=2290.905mil|Location2.Y=2298.572mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R21-1(712.452mil,15.09mil) on Multi-Layer And Track (609.91mil,101.132mil)(688.324mil,35.335mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.885mil|Location2.X=4460.135mil|Location1.Y=3675.477mil|Location2.Y=3686.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.885mil|Location2.X=4460.135mil|Location1.Y=3675.477mil|Location2.Y=3686.727mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.579mil &lt; 10mil) Between Pad R2-2(2952.756mil,1426.772mil) on Multi-Layer And Track (2984.921mil,1426.772mil)(3009.921mil,1426.772mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.579mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.595mil|Location2.X=2989.261mil|Location1.Y=2290.905mil|Location2.Y=2298.572mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.595mil|Location2.X=2989.261mil|Location1.Y=2290.905mil|Location2.Y=2298.572mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R22-1(1539.223mil,15.09mil) on Multi-Layer And Track (1436.682mil,101.132mil)(1515.096mil,35.335mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2706.004mil|Location2.X=2713.671mil|Location1.Y=2290.905mil|Location2.Y=2298.572mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2706.004mil|Location2.X=2713.671mil|Location1.Y=2290.905mil|Location2.Y=2298.572mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R23-1(1263.633mil,15.09mil) on Multi-Layer And Track (1161.091mil,101.132mil)(1239.505mil,35.335mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.414mil|Location2.X=2438.08mil|Location1.Y=2290.905mil|Location2.Y=2298.572mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.414mil|Location2.X=2438.08mil|Location1.Y=2290.905mil|Location2.Y=2298.572mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R24-1(988.042mil,15.09mil) on Multi-Layer And Track (885.501mil,101.132mil)(963.915mil,35.335mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4751.855mil|Location2.X=4763.105mil|Location1.Y=2533.745mil|Location2.Y=2544.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4751.855mil|Location2.X=4763.105mil|Location1.Y=2533.745mil|Location2.Y=2544.995mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.361mil &lt; 10mil) Between Pad R3-1(3307.087mil,285.039mil) on Multi-Layer And Track (3249.921mil,285.039mil)(3274.921mil,285.039mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.361mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.885mil|Location2.X=4460.135mil|Location1.Y=2533.745mil|Location2.Y=2544.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.885mil|Location2.X=4460.135mil|Location1.Y=2533.745mil|Location2.Y=2544.995mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.579mil &lt; 10mil) Between Pad R3-2(2952.756mil,285.039mil) on Multi-Layer And Track (2984.921mil,285.039mil)(3009.921mil,285.039mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.579mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3492.012mil|Location2.X=3503.262mil|Location1.Y=1776.265mil|Location2.Y=1787.515mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3492.012mil|Location2.X=3503.262mil|Location1.Y=1776.265mil|Location2.Y=1787.515mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.361mil &lt; 10mil) Between Pad R4-1(2047.244mil,-472.441mil) on Multi-Layer And Track (1990.079mil,-472.441mil)(2015.079mil,-472.441mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.361mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3189.042mil|Location2.X=3200.292mil|Location1.Y=1776.265mil|Location2.Y=1787.515mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3189.042mil|Location2.X=3200.292mil|Location1.Y=1776.265mil|Location2.Y=1787.515mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.579mil &lt; 10mil) Between Pad R4-2(1692.913mil,-472.441mil) on Multi-Layer And Track (1725.079mil,-472.441mil)(1750.079mil,-472.441mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.579mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3189.042mil|Location2.X=3200.292mil|Location1.Y=4335.32mil|Location2.Y=4346.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3189.042mil|Location2.X=3200.292mil|Location1.Y=4335.32mil|Location2.Y=4346.57mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.579mil &lt; 10mil) Between Pad R5-1(1692.913mil,2086.614mil) on Multi-Layer And Track (1725.079mil,2086.614mil)(1750.079mil,2086.614mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.579mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3492.012mil|Location2.X=3503.262mil|Location1.Y=4335.32mil|Location2.Y=4346.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3492.012mil|Location2.X=3503.262mil|Location1.Y=4335.32mil|Location2.Y=4346.57mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.361mil &lt; 10mil) Between Pad R5-2(2047.244mil,2086.614mil) on Multi-Layer And Track (1990.079mil,2086.614mil)(2015.079mil,2086.614mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.361mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.885mil|Location2.X=4460.135mil|Location1.Y=3557.367mil|Location2.Y=3568.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.885mil|Location2.X=4460.135mil|Location1.Y=3557.367mil|Location2.Y=3568.617mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.579mil &lt; 10mil) Between Pad R6-1(2952.756mil,1308.661mil) on Multi-Layer And Track (2984.921mil,1308.661mil)(3009.921mil,1308.661mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.579mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4751.855mil|Location2.X=4763.105mil|Location1.Y=3557.367mil|Location2.Y=3568.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4751.855mil|Location2.X=4763.105mil|Location1.Y=3557.367mil|Location2.Y=3568.617mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.361mil &lt; 10mil) Between Pad R6-2(3307.087mil,1308.661mil) on Multi-Layer And Track (3249.921mil,1308.661mil)(3274.921mil,1308.661mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.361mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.885mil|Location2.X=4460.135mil|Location1.Y=2415.635mil|Location2.Y=2426.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.885mil|Location2.X=4460.135mil|Location1.Y=2415.635mil|Location2.Y=2426.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.579mil &lt; 10mil) Between Pad R7-1(2952.756mil,166.929mil) on Multi-Layer And Track (2984.921mil,166.929mil)(3009.921mil,166.929mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.579mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4751.855mil|Location2.X=4763.105mil|Location1.Y=2415.635mil|Location2.Y=2426.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4751.855mil|Location2.X=4763.105mil|Location1.Y=2415.635mil|Location2.Y=2426.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.361mil &lt; 10mil) Between Pad R7-2(3307.087mil,166.929mil) on Multi-Layer And Track (3249.921mil,166.929mil)(3274.921mil,166.929mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.361mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3189.042mil|Location2.X=3200.292mil|Location1.Y=1658.155mil|Location2.Y=1669.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3189.042mil|Location2.X=3200.292mil|Location1.Y=1658.155mil|Location2.Y=1669.405mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.579mil &lt; 10mil) Between Pad R8-1(1692.913mil,-590.551mil) on Multi-Layer And Track (1725.079mil,-590.551mil)(1750.079mil,-590.551mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.579mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3492.012mil|Location2.X=3503.262mil|Location1.Y=1658.155mil|Location2.Y=1669.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3492.012mil|Location2.X=3503.262mil|Location1.Y=1658.155mil|Location2.Y=1669.405mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.361mil &lt; 10mil) Between Pad R8-2(2047.244mil,-590.551mil) on Multi-Layer And Track (1990.079mil,-590.551mil)(2015.079mil,-590.551mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.361mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.595mil|Location2.X=2989.261mil|Location1.Y=3803.791mil|Location2.Y=3811.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.595mil|Location2.X=2989.261mil|Location1.Y=3803.791mil|Location2.Y=3811.457mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R9-1(1539.223mil,1578.611mil) on Multi-Layer And Track (1436.682mil,1492.569mil)(1515.096mil,1558.366mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDXMBMPBP1ELMXPFKPFEE15JSSDHHOOCRUNEEPOWP1XJPKBDUYMTXH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4687.946mil|Location2.X=4695.613mil|Location1.Y=2198.905mil|Location2.Y=2206.572mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4687.946mil|Location2.X=4695.613mil|Location1.Y=2198.905mil|Location2.Y=2206.572mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "10" (3215.402mil,-47.843mil) on Top Overlay And Track (3047.402mil,-58.843mil)(3414.732mil,-58.843mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4651.188mil|Location2.X=4662.438mil|Location1.Y=2197.06mil|Location2.Y=2208.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4651.188mil|Location2.X=4662.438mil|Location1.Y=2197.06mil|Location2.Y=2208.31mil|Absolute=True">Silk To Silk Clearance Constraint: (0.287mil &lt; 10mil) Between Text "10" (3215.402mil,-47.843mil) on Top Overlay And Track (3177.402mil,-79.843mil)(3177.402mil,-58.661mil) on Top Overlay Silk Text to Silk Clearance [0.287mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4781.282mil|Location2.X=4788.948mil|Location1.Y=2198.905mil|Location2.Y=2206.572mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4781.282mil|Location2.X=4788.948mil|Location1.Y=2198.905mil|Location2.Y=2206.572mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "9" (3315.402mil,-47.843mil) on Top Overlay And Track (3047.402mil,-58.843mil)(3414.732mil,-58.843mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4762.802mil|Location2.X=4774.052mil|Location1.Y=2196.282mil|Location2.Y=2207.532mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\Hall_Voltage\Hall_Voltage.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4762.802mil|Location2.X=4774.052mil|Location1.Y=2196.282mil|Location2.Y=2207.532mil|Absolute=True">Silk To Silk Clearance Constraint: (3.297mil &lt; 10mil) Between Text "9" (3315.402mil,-47.843mil) on Top Overlay And Track (3297.402mil,-79.843mil)(3297.402mil,-59.843mil) on Top Overlay Silk Text to Silk Clearance [3.297mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

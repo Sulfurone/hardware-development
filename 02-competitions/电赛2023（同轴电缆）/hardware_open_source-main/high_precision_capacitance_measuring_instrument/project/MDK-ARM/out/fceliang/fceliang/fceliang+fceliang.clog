@@ -1,0 +1,13 @@
+# CMSIS Build Audit File generated on 2024-06-28T13:20:11
+
+# Project Description File: d:/Coding/mcu/drivers/fceliang/fceliang/MDK-ARM/fceliang+fceliang.cprj
+
+# Toolchain Configuration File: C:/Users/wyh/.vcpkg/artifacts/2139c4c6/tools.open.cmsis.pack.cmsis.toolbox/2.4.0/etc/AC6.6.16.2.cmake
+
+# Package: ARM::CMSIS@5.9.0
+  Location: C:\Users\wyh\AppData\Local\arm\packs/ARM/CMSIS/5.9.0/
+
+  * Component: ARM::CMSIS:CORE@5.6.0
+
+# Package: Keil::STM32F1xx_DFP@2.4.1
+  Location: C:\Users\wyh\AppData\Local\arm\packs/Keil/STM32F1xx_DFP/2.4.1/

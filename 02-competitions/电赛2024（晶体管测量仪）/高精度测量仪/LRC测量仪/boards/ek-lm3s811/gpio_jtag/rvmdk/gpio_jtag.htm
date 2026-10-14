@@ -1,0 +1,231 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<title>Static Call Graph - [.\rvmdk\gpio_jtag.axf]</title></head>
+<body><HR>
+<H1>Static Call Graph for image .\rvmdk\gpio_jtag.axf</H1><HR>
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, RVCT4.0 [Build 728]: Last Updated: Wed Nov 03 11:01:59 2010
+<BR><P>
+<H3>Maximum Stack Usage =         56 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+Call chain for Maximum Stack Depth:</H3>
+main &rArr; SysCtlClockSet
+<P>
+<H3>
+Functions with no stack information
+</H3><UL>
+ <LI><a href="#[f5f6a4]">Reset_Handler</a>
+ <LI><a href="#[f5f884]">NmiSR</a>
+ <LI><a href="#[f5f848]">FaultISR</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+</UL>
+</UL>
+<P>
+<H3>
+Mutually Recursive functions
+</H3> <LI><a href="#[f55bb8]">SysCtlDelay</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[f55bb8]">SysCtlDelay</a><BR>
+ <LI><a href="#[f5f884]">NmiSR</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[f5f884]">NmiSR</a><BR>
+ <LI><a href="#[f5f848]">FaultISR</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[f5f848]">FaultISR</a><BR>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[f5f80c]">IntDefaultHandler</a><BR>
+</UL>
+<P>
+<H3>
+Function Pointers
+</H3><UL>
+ <LI><a href="#[f5f6a4]">Reset_Handler</a>
+ <LI><a href="#[f5f884]">NmiSR</a>
+ <LI><a href="#[f5f848]">FaultISR</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5fdac]">GPIOCIntHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5f80c]">IntDefaultHandler</a>
+ <LI><a href="#[f5fd70]">main</a>
+</UL>
+<P>
+<H3>
+Global Symbols
+</H3>
+<P><STRONG><a name="[f5f6a4]"></a>Reset_Handler</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[f54e20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+</UL>
+
+<P><STRONG><a name="[f54e20]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[f5f6a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_Handler
+</UL>
+
+<P><STRONG><a name="[f54ad8]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+
+<P><STRONG><a name="[f549ac]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<BR><BR>[Calls]<UL><LI><a href="#[f54754]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+</UL>
+
+<P><STRONG><a name="[f54970]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<BR><BR>[Called By]<UL><LI><a href="#[f54754]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+</UL>
+
+<P><STRONG><a name="[f54880]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7.o(.ARM.Collect$$$$00000007))
+
+<P><STRONG><a name="[f55bb8]"></a>SysCtlDelay</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, sysctl.o(.emb_text))
+<BR><BR>[Calls]<UL><LI><a href="#[f55bb8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f55bb8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<LI><a href="#[f5fb54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
+</UL>
+
+<P><STRONG><a name="[f54754]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[f54970]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f549ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
+</UL>
+
+<P><STRONG><a name="[f54718]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+
+<P><STRONG><a name="[f5fdac]"></a>GPIOCIntHandler</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, gpio_jtag.o(i.GPIOCIntHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIOCIntHandler &rArr; GPIOPinTypeGPIOInput
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f5fc44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
+<LI><a href="#[f5fcbc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinIntClear
+<LI><a href="#[f5fd34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL>
+<P><STRONG><a name="[f5fd34]"></a>GPIODirModeSet</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, gpio.o(i.GPIODirModeSet))
+<BR><BR>[Called By]<UL><LI><a href="#[f5fc08]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
+<LI><a href="#[f5fc44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
+<LI><a href="#[f5fdac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOCIntHandler
+</UL>
+
+<P><STRONG><a name="[f5fcf8]"></a>GPIOIntTypeSet</STRONG> (Thumb, 58 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntTypeSet))
+<BR><BR>[Called By]<UL><LI><a href="#[f5fd70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f5bc48]"></a>GPIOPadConfigSet</STRONG> (Thumb, 176 bytes, Stack size 0 bytes, gpio.o(i.GPIOPadConfigSet))
+<BR><BR>[Called By]<UL><LI><a href="#[f5fc08]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
+<LI><a href="#[f5fc44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
+</UL>
+
+<P><STRONG><a name="[f5fcbc]"></a>GPIOPinIntClear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinIntClear))
+<BR><BR>[Called By]<UL><LI><a href="#[f5fdac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOCIntHandler
+</UL>
+
+<P><STRONG><a name="[f5fc80]"></a>GPIOPinIntEnable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinIntEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[f5fd70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f5fc44]"></a>GPIOPinTypeGPIOInput</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeGPIOInput))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = GPIOPinTypeGPIOInput
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f5bc48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[f5fd34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f5fd70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[f5fdac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOCIntHandler
+</UL>
+
+<P><STRONG><a name="[f5fc08]"></a>GPIOPinTypeGPIOOutput</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeGPIOOutput))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = GPIOPinTypeGPIOOutput
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f5bc48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[f5fd34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f5fd70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f5fbcc]"></a>GPIOPinWrite</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinWrite))
+<BR><BR>[Called By]<UL><LI><a href="#[f5fd70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f5fb90]"></a>IntEnable</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, interrupt.o(i.IntEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[f5fd70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f5fb54]"></a>SysCtlClockSet</STRONG> (Thumb, 288 bytes, Stack size 24 bytes, sysctl.o(i.SysCtlClockSet))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SysCtlClockSet
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f55bb8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f5fd70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f5fb18]"></a>SysCtlPeripheralEnable</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, sysctl.o(i.SysCtlPeripheralEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[f5fd70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f54358]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+
+<P><STRONG><a name="[f5431c]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+
+<P><STRONG><a name="[f542e0]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+
+<P><STRONG><a name="[f5fd70]"></a>main</STRONG> (Thumb, 258 bytes, Stack size 32 bytes, gpio_jtag.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = main &rArr; SysCtlClockSet
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f5fb18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
+<LI><a href="#[f5fb54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
+<LI><a href="#[f5fb90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
+<LI><a href="#[f5fbcc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinWrite
+<LI><a href="#[f5fc08]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
+<LI><a href="#[f5fc44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
+<LI><a href="#[f5fc80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinIntEnable
+<LI><a href="#[f5fcf8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntTypeSet
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> entry7.o(.ARM.Collect$$$$00000007)
+</UL><P>
+<H3>
+Local Symbols
+</H3>
+<P><STRONG><a name="[f5f884]"></a>NmiSR</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[f5f884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NmiSR
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f5f884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NmiSR
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL>
+<P><STRONG><a name="[f5f848]"></a>FaultISR</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[f5f848]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultISR
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f5f848]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultISR
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL>
+<P><STRONG><a name="[f5f80c]"></a>IntDefaultHandler</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[f5f80c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDefaultHandler
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f5f80c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDefaultHandler
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL><P>
+<H3>
+Undefined Global Symbols
+</H3><HR></body></html>

@@ -1,0 +1,21 @@
+*** Creating Trace Output File '.\rvmdk\demo.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\rvmdk\demo.o"'
+### List of Objects: adding '".\rvmdk\startup.o"'
+### List of Objects: adding '"..\..\..\driverlib\rvmdk\driverlib.lib"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\rvmdk\demo.o" ".\rvmdk\startup.o" "..\..\..\driverlib\rvmdk\driverlib.lib" --strict --scatter ".\rvmdk\demo.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\demo.map" -o ".\rvmdk\demo.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\rvmdk\demo.axf'
+### ADS-LD Command File: '.\rvmdk\demo.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\rvmdk\demo.lnp', Handle=0x000005C4
+### Writing '.lnp' file
+### ADS-LD Command file '.\rvmdk\demo.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

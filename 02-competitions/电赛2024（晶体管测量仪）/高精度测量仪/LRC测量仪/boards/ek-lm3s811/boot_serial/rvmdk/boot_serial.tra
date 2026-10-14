@@ -1,0 +1,32 @@
+*** Creating Trace Output File '.\rvmdk\boot_serial.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\rvmdk\bl_autobaud.o"'
+### List of Objects: adding '".\rvmdk\bl_can.o"'
+### List of Objects: adding '".\rvmdk\bl_check.o"'
+### List of Objects: adding '".\rvmdk\bl_decrypt.o"'
+### List of Objects: adding '".\rvmdk\bl_enet.o"'
+### List of Objects: adding '".\rvmdk\bl_flash.o"'
+### List of Objects: adding '".\rvmdk\bl_i2c.o"'
+### List of Objects: adding '".\rvmdk\bl_main.o"'
+### List of Objects: adding '".\rvmdk\bl_packet.o"'
+### List of Objects: adding '".\rvmdk\bl_ssi.o"'
+### List of Objects: adding '".\rvmdk\bl_startup_rvmdk.o"'
+### List of Objects: adding '".\rvmdk\bl_uart.o"'
+### List of Objects: adding '".\rvmdk\bl_usb.o"'
+### List of Objects: adding '".\rvmdk\bl_usbfuncs.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\rvmdk\bl_autobaud.o" ".\rvmdk\bl_can.o" ".\rvmdk\bl_check.o" ".\rvmdk\bl_decrypt.o" ".\rvmdk\bl_enet.o" ".\rvmdk\bl_flash.o" ".\rvmdk\bl_i2c.o" ".\rvmdk\bl_main.o" ".\rvmdk\bl_packet.o" ".\rvmdk\bl_ssi.o" ".\rvmdk\bl_startup_rvmdk.o" ".\rvmdk\bl_uart.o" ".\rvmdk\bl_usb.o" ".\rvmdk\bl_usbfuncs.o" --library_type=microlib --strict --scatter "..\..\..\boot_loader\bl_link.sct" 
+--entry Reset_Handler --autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\rvmdk\boot_serial.map" -o ".\rvmdk\boot_serial.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\rvmdk\boot_serial.axf'
+### ADS-LD Command File: '.\rvmdk\boot_serial.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\rvmdk\boot_serial.lnp', Handle=0x00000754
+### Writing '.lnp' file
+### ADS-LD Command file '.\rvmdk\boot_serial.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

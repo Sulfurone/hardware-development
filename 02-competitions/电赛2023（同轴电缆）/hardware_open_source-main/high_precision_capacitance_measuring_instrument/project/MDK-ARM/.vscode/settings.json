@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "tim.h": "c",
+        "stm32f1xx_it.h": "c",
+        "main.h": "c",
+        "key.h": "c",
+        "pch.h": "c",
+        "flash.h": "c",
+        "stm32f1xx_hal.h": "c"
+    },
+    "cmsis-csolution.actions": [
+        {
+            "path": "fceliang.csolution.yml",
+            "target": "fceliang",
+            "config": {
+                "debug": "Arm Debugger",
+                "run": "Flash Device"
+            },
+            // "C_Cpp.default.configurationProvider": "cmsis-csolution"
+
+        }
+    ]
+}

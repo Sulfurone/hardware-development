@@ -1,0 +1,80 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.31.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 32113123 12312, 31231313131, LIC=EXJT4-FCMYM-9UY4U-SI5WI-I1FVW-KUP2A
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.31.0.0
+Toolchain Path:  F:\keilarm\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.14
+Assembler:       Armasm.exe V6.14
+Linker/Locator:  ArmLink.exe V6.14
+Library Manager: ArmAr.exe V6.14
+Hex Converter:   FromElf.exe V6.14
+CPU DLL:         SARMCM3.DLL V5.31.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      Segger\JL2CM3.dll V2.99.38.0
+Dialog DLL:      TCM.DLL V1.46.0.0
+ 
+<h2>Project:</h2>
+C:\Users\12312\Desktop\hardware_open_source-main\high_precision_capacitance_measuring_instrument\project\MDK-ARM\fceliang.uvprojx
+Project File Date:  04/12/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.14', folder: 'F:\keilarm\ARM\ARMCLANG\Bin'
+Build target 'fceliang'
+../Core/Src/main.c(75): warning: passing 'char [32]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+    OLED_ShowString(0, 0, display_buf, 16);
+                          ^~~~~~~~~~~
+../User/oled.h(22): note: passing argument to parameter 'chr' here
+void OLED_ShowString(uint8_t x,uint8_t y,uint8_t *chr,uint8_t Char_Size);
+                                                  ^
+../Core/Src/main.c(89): warning: passing 'char [32]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+    OLED_ShowString(0, 3, display_buf, 16);
+                          ^~~~~~~~~~~
+../User/oled.h(22): note: passing argument to parameter 'chr' here
+void OLED_ShowString(uint8_t x,uint8_t y,uint8_t *chr,uint8_t Char_Size);
+                                                  ^
+../Core/Src/main.c(107): warning: passing 'char [32]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+OLED_ShowString(0, 5,display_buf, 16);
+                     ^~~~~~~~~~~
+../User/oled.h(22): note: passing argument to parameter 'chr' here
+void OLED_ShowString(uint8_t x,uint8_t y,uint8_t *chr,uint8_t Char_Size);
+                                                  ^
+3 warnings generated.
+compiling main.c...
+linking...
+Program Size: Code=12234 RO-data=2350 RW-data=60 ZI-data=1412  
+FromELF: creating hex file...
+"fceliang\fceliang.axf" - 0 Error(s), 3 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.1.0.4.pack
+                Keil.STM32F1xx_DFP.1.0.4
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_fceliang
+  F:\keilarm\ARM\CMSIS\5.9.0\CMSIS\Core\Include
+  F:\keilarm\Keil\STM32F1xx_DFP\1.0.4\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+      Include file:  CMSIS\Core\Include\tz_context.h
+Build Time Elapsed:  00:00:00
+</pre>
+</body>
+</html>

@@ -1,0 +1,21 @@
+*** Creating Trace Output File '.\rvmdk\uart_echo.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\rvmdk\startup_rvmdk.o"'
+### List of Objects: adding '".\rvmdk\uart_echo.o"'
+### List of Objects: adding '"..\..\..\driverlib\rvmdk\driverlib.lib"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\rvmdk\startup_rvmdk.o" ".\rvmdk\uart_echo.o" "..\..\..\driverlib\rvmdk\driverlib.lib" --library_type=microlib --strict --scatter "uart_echo.sct" 
+--entry Reset_Handler --autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\rvmdk\uart_echo.map" -o ".\rvmdk\uart_echo.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\rvmdk\uart_echo.axf'
+### ADS-LD Command File: '.\rvmdk\uart_echo.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\rvmdk\uart_echo.lnp', Handle=0x00000280
+### Writing '.lnp' file
+### ADS-LD Command file '.\rvmdk\uart_echo.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

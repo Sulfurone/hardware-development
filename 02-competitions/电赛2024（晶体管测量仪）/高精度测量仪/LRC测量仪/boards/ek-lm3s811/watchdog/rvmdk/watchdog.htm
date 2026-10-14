@@ -1,0 +1,251 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<title>Static Call Graph - [.\rvmdk\watchdog.axf]</title></head>
+<body><HR>
+<H1>Static Call Graph for image .\rvmdk\watchdog.axf</H1><HR>
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, RVCT4.0 [Build 728]: Last Updated: Wed Nov 03 12:15:09 2010
+<BR><P>
+<H3>Maximum Stack Usage =         32 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+Call chain for Maximum Stack Depth:</H3>
+main &rArr; SysCtlClockSet
+<P>
+<H3>
+Functions with no stack information
+</H3><UL>
+ <LI><a href="#[f3e61c]">Reset_Handler</a>
+ <LI><a href="#[f3e7fc]">NmiSR</a>
+ <LI><a href="#[f3e7c0]">FaultISR</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+</UL>
+</UL>
+<P>
+<H3>
+Mutually Recursive functions
+</H3> <LI><a href="#[f33a8c]">SysCtlDelay</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[f33a8c]">SysCtlDelay</a><BR>
+ <LI><a href="#[f3e7fc]">NmiSR</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[f3e7fc]">NmiSR</a><BR>
+ <LI><a href="#[f3e7c0]">FaultISR</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[f3e7c0]">FaultISR</a><BR>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[f3e784]">IntDefaultHandler</a><BR>
+</UL>
+<P>
+<H3>
+Function Pointers
+</H3><UL>
+ <LI><a href="#[f3e61c]">Reset_Handler</a>
+ <LI><a href="#[f3e7fc]">NmiSR</a>
+ <LI><a href="#[f3e7c0]">FaultISR</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e5a4]">WatchdogIntHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3e784]">IntDefaultHandler</a>
+ <LI><a href="#[f3d884]">main</a>
+</UL>
+<P>
+<H3>
+Global Symbols
+</H3>
+<P><STRONG><a name="[f3e61c]"></a>Reset_Handler</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[f30e7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+</UL>
+
+<P><STRONG><a name="[f30e7c]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[f3e61c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_Handler
+</UL>
+
+<P><STRONG><a name="[f30b34]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+
+<P><STRONG><a name="[f30a08]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<BR><BR>[Calls]<UL><LI><a href="#[f307b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+</UL>
+
+<P><STRONG><a name="[f309cc]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<BR><BR>[Called By]<UL><LI><a href="#[f307b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+</UL>
+
+<P><STRONG><a name="[f308dc]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7.o(.ARM.Collect$$$$00000007))
+
+<P><STRONG><a name="[f33a8c]"></a>SysCtlDelay</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, sysctl.o(.emb_text))
+<BR><BR>[Calls]<UL><LI><a href="#[f33a8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f33a8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<LI><a href="#[f3d6e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
+</UL>
+
+<P><STRONG><a name="[f37bf0]"></a>CPUcpsid</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, cpu.o(.emb_text), UNUSED)
+
+<P><STRONG><a name="[f30f30]"></a>CPUprimask</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, cpu.o(.emb_text), UNUSED)
+
+<P><STRONG><a name="[f37bb4]"></a>CPUcpsie</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, cpu.o(.emb_text))
+<BR><BR>[Called By]<UL><LI><a href="#[f3d758]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterEnable
+</UL>
+
+<P><STRONG><a name="[f3312c]"></a>CPUwfi</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, cpu.o(.emb_text), UNUSED)
+
+<P><STRONG><a name="[f307b0]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[f309cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f30a08]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
+</UL>
+
+<P><STRONG><a name="[f30774]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+
+<P><STRONG><a name="[f39c48]"></a>GPIODirModeSet</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, gpio.o(i.GPIODirModeSet))
+<BR><BR>[Called By]<UL><LI><a href="#[f3d80c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
+</UL>
+
+<P><STRONG><a name="[f39b58]"></a>GPIOPadConfigSet</STRONG> (Thumb, 176 bytes, Stack size 0 bytes, gpio.o(i.GPIOPadConfigSet))
+<BR><BR>[Called By]<UL><LI><a href="#[f3d80c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
+</UL>
+
+<P><STRONG><a name="[f3d848]"></a>GPIOPinRead</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinRead))
+<BR><BR>[Called By]<UL><LI><a href="#[f3e5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WatchdogIntHandler
+</UL>
+
+<P><STRONG><a name="[f3d80c]"></a>GPIOPinTypeGPIOOutput</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeGPIOOutput))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = GPIOPinTypeGPIOOutput
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f39b58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[f39c48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f3d884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f3d7d0]"></a>GPIOPinWrite</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinWrite))
+<BR><BR>[Called By]<UL><LI><a href="#[f3e5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WatchdogIntHandler
+</UL>
+
+<P><STRONG><a name="[f3d794]"></a>IntEnable</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, interrupt.o(i.IntEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[f3d884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f3d758]"></a>IntMasterEnable</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, interrupt.o(i.IntMasterEnable))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = IntMasterEnable
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f37bb4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPUcpsie
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f3d884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f3d71c]"></a>SysCtlClockGet</STRONG> (Thumb, 438 bytes, Stack size 8 bytes, sysctl.o(i.SysCtlClockGet))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SysCtlClockGet
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f3d884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f3d6e0]"></a>SysCtlClockSet</STRONG> (Thumb, 288 bytes, Stack size 24 bytes, sysctl.o(i.SysCtlClockSet))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SysCtlClockSet
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f33a8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f3d884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f3d6a4]"></a>SysCtlPeripheralEnable</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, sysctl.o(i.SysCtlPeripheralEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[f3d884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f3d668]"></a>WatchdogEnable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, watchdog.o(i.WatchdogEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[f3d884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f3d62c]"></a>WatchdogIntClear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, watchdog.o(i.WatchdogIntClear))
+<BR><BR>[Called By]<UL><LI><a href="#[f3e5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WatchdogIntHandler
+</UL>
+
+<P><STRONG><a name="[f3e5a4]"></a>WatchdogIntHandler</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, watchdog.o(i.WatchdogIntHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = WatchdogIntHandler
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f3d62c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WatchdogIntClear
+<LI><a href="#[f3d7d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinWrite
+<LI><a href="#[f3d848]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinRead
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL>
+<P><STRONG><a name="[f3d5f0]"></a>WatchdogReloadSet</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, watchdog.o(i.WatchdogReloadSet))
+<BR><BR>[Called By]<UL><LI><a href="#[f3d884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f3d5b4]"></a>WatchdogResetEnable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, watchdog.o(i.WatchdogResetEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[f3d884]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[f303f0]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+
+<P><STRONG><a name="[f303b4]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+
+<P><STRONG><a name="[f30378]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+
+<P><STRONG><a name="[f3d884]"></a>main</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, watchdog.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = main &rArr; SysCtlClockSet
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f3d5b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WatchdogResetEnable
+<LI><a href="#[f3d5f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WatchdogReloadSet
+<LI><a href="#[f3d668]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WatchdogEnable
+<LI><a href="#[f3d6a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
+<LI><a href="#[f3d6e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
+<LI><a href="#[f3d71c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
+<LI><a href="#[f3d758]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterEnable
+<LI><a href="#[f3d794]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
+<LI><a href="#[f3d80c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> entry7.o(.ARM.Collect$$$$00000007)
+</UL><P>
+<H3>
+Local Symbols
+</H3>
+<P><STRONG><a name="[f3e7fc]"></a>NmiSR</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[f3e7fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NmiSR
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f3e7fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NmiSR
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL>
+<P><STRONG><a name="[f3e7c0]"></a>FaultISR</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[f3e7c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultISR
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f3e7c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultISR
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL>
+<P><STRONG><a name="[f3e784]"></a>IntDefaultHandler</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[f3e784]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDefaultHandler
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f3e784]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDefaultHandler
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL><P>
+<H3>
+Undefined Global Symbols
+</H3><HR></body></html>

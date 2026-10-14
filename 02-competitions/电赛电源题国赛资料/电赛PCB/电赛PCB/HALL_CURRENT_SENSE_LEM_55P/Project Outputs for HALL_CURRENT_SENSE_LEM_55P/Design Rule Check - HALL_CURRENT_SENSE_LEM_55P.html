@@ -1,0 +1,555 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://D:\Altium Designer20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">9/8/2021</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">6:32:58 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc" class="file"><acronym title="H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc">H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">73</td></tr>
+</table>
+</td>
+</table><a name="IDSW5PYKB5RED4HTAYAHQMEWDE1PKWQM3HIZIF13JQK0LPQHG3OHHP"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBBRHYTQ0BVAVJLMCW55KOTAA4BJC1NSFM4NBIPFPCOGOXTCRVM0E">Clearance Constraint (Gap=20mil) (All),(All)</a></td>
+<td class="column2">65</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2TUYWH25FFFMJNRH0ZLWKEA1EJ5UF3JDXIFABPOPY4UYKWJKG21B">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4AYGLUHVQB1FGTOOAKIV2QXW3O43NWDYEX11VVHOAMEN1G3MNKIP">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0YD3YDMWVSDSFXXS2L1NYKNCSLE3XL4YNHMD1WHQT2DHYVJQZQVI">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOEGMZWWX40TGPETOF4G1IZ1LMBVOFA5Y5IBXUZDVBGHY1DBRTFH">Width Constraint (Min=8mil) (Max=100mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCYDB1312VSR2F1J2BGFATJX2DFOJEVEKNHTL3HCIJA12ZKKWUVM">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUUOKGHQKALDUITW34VJJZ5OMRCZCR4RCCNSGCHMUPO40NU3ERUBE">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZKCY1KZPGQUL2GR4IBGFUA4VEYTF5AZIX344XKFUOQHW5KNIPEC">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDTP53UQM04SAUAIF13N0EMIFACLC3DGI51CYX5CEMTTBU1GKTGQG">Minimum Solder Mask Sliver (Gap=10mil) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDL31MDZQETAJSOEP1LY2ZTASQMWU5VCK1YBS0JI2I0YXS5CV1NKC">Silk To Solder Mask (Clearance=10mil) (Disabled)(IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDT4VLLLLPBR25ITERCB3UINW4MPMPLTE4E55W5UOBHXWIVG31YFN">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQGUQP5HJFRDSLO3AJBPLIAVHXIR254OACRSGHENVWCFBNBYXGEOB">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZ14AWCIJ512EO0WAABHOWPQ2OHHE0I55ZP0LA1FVHH3R5YF4R0NB">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">73</td>
+</tr>
+</table><br><a name="IDBBRHYTQ0BVAVJLMCW55KOTAA4BJC1NSFM4NBIPFPCOGOXTCRVM0E"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=20mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1620.052mil|Location2.X=1641.302mil|Location1.Y=2295.182mil|Location2.Y=2323.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1620.052mil|Location2.X=1641.302mil|Location1.Y=2295.182mil|Location2.Y=2323.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-1722.677mil,830.394mil)(-1707.677mil,830.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1620.052mil|Location2.X=1641.302mil|Location1.Y=2295.182mil|Location2.Y=2323.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1620.052mil|Location2.X=1641.302mil|Location1.Y=2295.182mil|Location2.Y=2323.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-1722.677mil,830.394mil)(-1722.677mil,850.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1620.052mil|Location2.X=1641.302mil|Location1.Y=2335.182mil|Location2.Y=2363.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1620.052mil|Location2.X=1641.302mil|Location1.Y=2335.182mil|Location2.Y=2363.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-1722.677mil,850.394mil)(-1722.677mil,870.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1620.052mil|Location2.X=1641.302mil|Location1.Y=2335.182mil|Location2.Y=2363.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1620.052mil|Location2.X=1641.302mil|Location1.Y=2335.182mil|Location2.Y=2363.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-1722.677mil,870.394mil)(-1707.677mil,870.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1624.052mil|Location2.X=1645.302mil|Location1.Y=2295.182mil|Location2.Y=2323.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1624.052mil|Location2.X=1645.302mil|Location1.Y=2295.182mil|Location2.Y=2323.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-1742.677mil,830.394mil)(-1742.677mil,850.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1624.052mil|Location2.X=1645.302mil|Location1.Y=2335.182mil|Location2.Y=2363.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1624.052mil|Location2.X=1645.302mil|Location1.Y=2335.182mil|Location2.Y=2363.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-1742.677mil,850.394mil)(-1742.677mil,870.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1624.052mil|Location2.X=1645.302mil|Location1.Y=2295.182mil|Location2.Y=2323.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1624.052mil|Location2.X=1645.302mil|Location1.Y=2295.182mil|Location2.Y=2323.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-1757.677mil,830.394mil)(-1742.677mil,830.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1624.052mil|Location2.X=1645.302mil|Location1.Y=2335.182mil|Location2.Y=2363.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1624.052mil|Location2.X=1645.302mil|Location1.Y=2335.182mil|Location2.Y=2363.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-1757.677mil,870.394mil)(-1742.677mil,870.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3649.052mil|Location2.X=3670.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3649.052mil|Location2.X=3670.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (267.323mil,930.394mil)(282.323mil,930.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3649.052mil|Location2.X=3670.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3649.052mil|Location2.X=3670.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (267.323mil,970.394mil)(282.323mil,970.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3649.052mil|Location2.X=3670.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3649.052mil|Location2.X=3670.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (282.323mil,930.394mil)(282.323mil,970.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3645.052mil|Location2.X=3666.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3645.052mil|Location2.X=3666.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (302.323mil,930.394mil)(302.323mil,950.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3645.052mil|Location2.X=3666.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3645.052mil|Location2.X=3666.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (302.323mil,930.394mil)(317.323mil,930.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3645.052mil|Location2.X=3666.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3645.052mil|Location2.X=3666.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (302.323mil,950.394mil)(302.323mil,970.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3645.052mil|Location2.X=3666.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3645.052mil|Location2.X=3666.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (302.323mil,970.394mil)(317.323mil,970.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.525mil|Location2.X=3705.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.525mil|Location2.X=3705.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (322.795mil,881.931mil)(322.795mil,890.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.525mil|Location2.X=3705.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.525mil|Location2.X=3705.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (322.795mil,890.394mil)(342.795mil,890.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.525mil|Location2.X=3705.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.525mil|Location2.X=3705.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (322.795mil,910.394mil)(322.795mil,925.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.525mil|Location2.X=3705.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.525mil|Location2.X=3705.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (322.795mil,910.394mil)(342.795mil,910.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.525mil|Location2.X=3745.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.525mil|Location2.X=3745.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (342.795mil,890.394mil)(362.795mil,890.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.525mil|Location2.X=3745.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.525mil|Location2.X=3745.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (342.795mil,910.394mil)(362.795mil,910.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.525mil|Location2.X=3745.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.525mil|Location2.X=3745.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (362.795mil,875.394mil)(362.795mil,890.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.525mil|Location2.X=3745.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.525mil|Location2.X=3745.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (362.795mil,910.394mil)(362.795mil,925.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.729mil|Location2.X=2688.979mil|Location1.Y=2854.789mil|Location2.Y=2882.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.729mil|Location2.X=2688.979mil|Location1.Y=2854.789mil|Location2.Y=2882.909mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-675mil,1390mil)(-660mil,1390mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.729mil|Location2.X=2688.979mil|Location1.Y=2854.789mil|Location2.Y=2882.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.729mil|Location2.X=2688.979mil|Location1.Y=2854.789mil|Location2.Y=2882.909mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-675mil,1390mil)(-675mil,1410mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.729mil|Location2.X=2688.979mil|Location1.Y=2894.789mil|Location2.Y=2922.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.729mil|Location2.X=2688.979mil|Location1.Y=2894.789mil|Location2.Y=2922.909mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-675mil,1410mil)(-675mil,1430mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.729mil|Location2.X=2688.979mil|Location1.Y=2894.789mil|Location2.Y=2922.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2667.729mil|Location2.X=2688.979mil|Location1.Y=2894.789mil|Location2.Y=2922.909mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-675mil,1430mil)(-660mil,1430mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.729mil|Location2.X=2692.979mil|Location1.Y=2854.789mil|Location2.Y=2882.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.729mil|Location2.X=2692.979mil|Location1.Y=2854.789mil|Location2.Y=2882.909mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-695mil,1390mil)(-695mil,1410mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.729mil|Location2.X=2692.979mil|Location1.Y=2894.789mil|Location2.Y=2922.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.729mil|Location2.X=2692.979mil|Location1.Y=2894.789mil|Location2.Y=2922.909mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-695mil,1410mil)(-695mil,1430mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.729mil|Location2.X=2692.979mil|Location1.Y=2854.789mil|Location2.Y=2882.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.729mil|Location2.X=2692.979mil|Location1.Y=2854.789mil|Location2.Y=2882.909mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-710mil,1390mil)(-695mil,1390mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.729mil|Location2.X=2692.979mil|Location1.Y=2894.789mil|Location2.Y=2922.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.729mil|Location2.X=2692.979mil|Location1.Y=2894.789mil|Location2.Y=2922.909mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-710mil,1430mil)(-695mil,1430mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2495.182mil|Location2.Y=2523.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2495.182mil|Location2.Y=2523.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-747.677mil,1030.394mil)(-732.677mil,1030.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2535.182mil|Location2.Y=2563.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2535.182mil|Location2.Y=2563.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-747.677mil,1030.394mil)(-747.677mil,1070.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2535.182mil|Location2.Y=2563.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2535.182mil|Location2.Y=2563.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-747.677mil,1070.394mil)(-732.677mil,1070.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-747.677mil,930.394mil)(-732.677mil,930.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-747.677mil,930.394mil)(-747.677mil,970.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2595.052mil|Location2.X=2616.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-747.677mil,970.394mil)(-732.677mil,970.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2535.182mil|Location2.Y=2563.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2535.182mil|Location2.Y=2563.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-767.677mil,1030.394mil)(-767.677mil,1070.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-767.677mil,930.394mil)(-767.677mil,950.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-767.677mil,950.394mil)(-767.677mil,970.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2495.182mil|Location2.Y=2523.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2495.182mil|Location2.Y=2523.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-782.677mil,1030.394mil)(-767.677mil,1030.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2535.182mil|Location2.Y=2563.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2535.182mil|Location2.Y=2563.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-782.677mil,1070.394mil)(-767.677mil,1070.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2395.182mil|Location2.Y=2423.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-782.677mil,930.394mil)(-767.677mil,930.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2599.052mil|Location2.X=2620.302mil|Location1.Y=2435.182mil|Location2.Y=2463.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-782.677mil,970.394mil)(-767.677mil,970.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2574.052mil|Location2.Y=2595.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2574.052mil|Location2.Y=2595.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-787.205mil,1075.394mil)(-787.205mil,1090.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2570.052mil|Location2.Y=2591.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2570.052mil|Location2.Y=2591.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-787.205mil,1110.394mil)(-787.205mil,1125.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-787.205mil,875.394mil)(-787.205mil,890.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-787.205mil,910.394mil)(-787.205mil,925.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-807.205mil,910.394mil)(-787.205mil,910.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2520.524mil|Location2.X=2541.774mil|Location1.Y=2802.584mil|Location2.Y=2830.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2520.524mil|Location2.X=2541.774mil|Location1.Y=2802.584mil|Location2.Y=2830.704mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-822.205mil,1337.795mil)(-807.205mil,1337.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2520.524mil|Location2.X=2541.774mil|Location1.Y=2802.584mil|Location2.Y=2830.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2520.524mil|Location2.X=2541.774mil|Location1.Y=2802.584mil|Location2.Y=2830.704mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-822.205mil,1337.795mil)(-822.205mil,1357.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2520.524mil|Location2.X=2541.774mil|Location1.Y=2842.584mil|Location2.Y=2870.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2520.524mil|Location2.X=2541.774mil|Location1.Y=2842.584mil|Location2.Y=2870.704mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-822.205mil,1357.795mil)(-822.205mil,1377.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2520.524mil|Location2.X=2541.774mil|Location1.Y=2842.584mil|Location2.Y=2870.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2520.524mil|Location2.X=2541.774mil|Location1.Y=2842.584mil|Location2.Y=2870.704mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-822.205mil,1377.795mil)(-807.205mil,1377.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2574.052mil|Location2.Y=2595.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2574.052mil|Location2.Y=2595.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-827.205mil,1075.394mil)(-827.205mil,1090.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2574.052mil|Location2.Y=2595.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2574.052mil|Location2.Y=2595.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-827.205mil,1090.394mil)(-787.205mil,1090.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2570.052mil|Location2.Y=2591.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2570.052mil|Location2.Y=2591.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-827.205mil,1110.394mil)(-787.205mil,1110.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2570.052mil|Location2.Y=2591.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2570.052mil|Location2.Y=2591.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-827.205mil,1110.394mil)(-827.205mil,1125.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-827.205mil,875.394mil)(-827.205mil,890.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.525mil|Location2.X=2595.645mil|Location1.Y=2374.052mil|Location2.Y=2395.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-827.205mil,890.394mil)(-787.205mil,890.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-827.205mil,910.394mil)(-807.205mil,910.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.525mil|Location2.X=2555.645mil|Location1.Y=2370.052mil|Location2.Y=2391.302mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-827.205mil,910.394mil)(-827.205mil,925.394mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.524mil|Location2.X=2545.774mil|Location1.Y=2802.584mil|Location2.Y=2830.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.524mil|Location2.X=2545.774mil|Location1.Y=2802.584mil|Location2.Y=2830.704mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-842.205mil,1337.795mil)(-842.205mil,1357.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.524mil|Location2.X=2545.774mil|Location1.Y=2842.584mil|Location2.Y=2870.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.524mil|Location2.X=2545.774mil|Location1.Y=2842.584mil|Location2.Y=2870.704mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-842.205mil,1357.795mil)(-842.205mil,1377.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.524mil|Location2.X=2545.774mil|Location1.Y=2802.584mil|Location2.Y=2830.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.524mil|Location2.X=2545.774mil|Location1.Y=2802.584mil|Location2.Y=2830.704mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-857.205mil,1337.795mil)(-842.205mil,1337.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.524mil|Location2.X=2545.774mil|Location1.Y=2842.584mil|Location2.Y=2870.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.524mil|Location2.X=2545.774mil|Location1.Y=2842.584mil|Location2.Y=2870.704mil|Absolute=True">Clearance Constraint: (16mil &lt; 20mil) Between Region (0 hole(s)) Top Layer And Track (-857.205mil,1377.795mil)(-842.205mil,1377.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDUUOKGHQKALDUITW34VJJZ5OMRCZCR4RCCNSGCHMUPO40NU3ERUBE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.895mil|Location2.X=4961.255mil|Location1.Y=1141.107mil|Location2.Y=1260.467mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.895mil|Location2.X=4961.255mil|Location1.Y=1141.107mil|Location2.Y=1260.467mil|Absolute=True">Hole Size Constraint: (118.11mil &gt; 100mil) Pad Free-Q(1536.22mil,-281.496mil) on Multi-Layer Actual Hole Size = 118.11mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.895mil|Location2.X=4961.255mil|Location1.Y=4841.895mil|Location2.Y=4961.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.895mil|Location2.X=4961.255mil|Location1.Y=4841.895mil|Location2.Y=4961.255mil|Absolute=True">Hole Size Constraint: (118.11mil &gt; 100mil) Pad Free-Q(1536.22mil,3419.291mil) on Multi-Layer Actual Hole Size = 118.11mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1141.107mil|Location2.X=1260.467mil|Location1.Y=1141.107mil|Location2.Y=1260.467mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1141.107mil|Location2.X=1260.467mil|Location1.Y=1141.107mil|Location2.Y=1260.467mil|Absolute=True">Hole Size Constraint: (118.11mil &gt; 100mil) Pad Free-Q(-2164.567mil,-281.496mil) on Multi-Layer Actual Hole Size = 118.11mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1141.107mil|Location2.X=1260.467mil|Location1.Y=4841.895mil|Location2.Y=4961.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1141.107mil|Location2.X=1260.467mil|Location1.Y=4841.895mil|Location2.Y=4961.255mil|Absolute=True">Hole Size Constraint: (118.11mil &gt; 100mil) Pad Free-Q(-2164.567mil,3419.291mil) on Multi-Layer Actual Hole Size = 118.11mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDT4VLLLLPBR25ITERCB3UINW4MPMPLTE4E55W5UOBHXWIVG31YFN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.614mil|Location2.X=2267.28mil|Location1.Y=1505.962mil|Location2.Y=1513.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.614mil|Location2.X=2267.28mil|Location1.Y=1505.962mil|Location2.Y=1513.629mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "10" (-1098.158mil,27.512mil) on Top Overlay And Track (-1109.158mil,-171.818mil)(-1109.158mil,195.512mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2257.769mil|Location2.X=2269.019mil|Location1.Y=1539.137mil|Location2.Y=1550.387mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2257.769mil|Location2.X=2269.019mil|Location1.Y=1539.137mil|Location2.Y=1550.387mil|Absolute=True">Silk To Silk Clearance Constraint: (0.287mil &lt; 10mil) Between Text "10" (-1098.158mil,27.512mil) on Top Overlay And Track (-1130.158mil,65.512mil)(-1108.976mil,65.512mil) on Top Overlay Silk Text to Silk Clearance [0.287mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.614mil|Location2.X=2267.28mil|Location1.Y=1412.627mil|Location2.Y=1420.293mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.614mil|Location2.X=2267.28mil|Location1.Y=1412.627mil|Location2.Y=1420.293mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "9" (-1098.158mil,-72.488mil) on Top Overlay And Track (-1109.158mil,-171.818mil)(-1109.158mil,195.512mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2256.991mil|Location2.X=2268.241mil|Location1.Y=1427.523mil|Location2.Y=1438.773mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\EDC PROJECT\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2256.991mil|Location2.X=2268.241mil|Location1.Y=1427.523mil|Location2.Y=1438.773mil|Absolute=True">Silk To Silk Clearance Constraint: (3.297mil &lt; 10mil) Between Text "9" (-1098.158mil,-72.488mil) on Top Overlay And Track (-1130.158mil,-54.488mil)(-1110.158mil,-54.488mil) on Top Overlay Silk Text to Silk Clearance [3.297mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

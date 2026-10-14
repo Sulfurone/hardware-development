@@ -1,0 +1,9 @@
+build-idx:
+  generated-by: csolution version 2.4.0
+  csolution: fceliang.csolution.yml
+  cprojects:
+    - cproject: fceliang.cproject.yml
+  cbuilds:
+    - cbuild: fceliang+fceliang.cbuild.yml
+      project: fceliang
+      configuration: +fceliang

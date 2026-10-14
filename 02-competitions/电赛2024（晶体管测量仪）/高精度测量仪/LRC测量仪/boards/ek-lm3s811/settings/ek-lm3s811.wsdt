@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>driverlib/Debug</Project><Project>boot_demo1/Debug</Project><Project>timers/Debug</Project><Project>interrupts/Debug</Project><Project>demo/Debug</Project><Project>uart_echo/Debug</Project><Project>blinky/Debug</Project><Project>gpio_jtag/Debug</Project><Project>boot_demo2/Debug</Project><Project>mpu_fault/Debug</Project><Project>watchdog/Debug</Project><Project>boot_serial/Debug</Project><Project>pwmgen/Debug</Project></CurrentConfigs><CurrentProj>demo</CurrentProj><OverviewSelected>1</OverviewSelected></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>266</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+    <Build><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>915</ColumnWidth1><ColumnWidth2>244</ColumnWidth2><ColumnWidth3>61</ColumnWidth3></Build><Debug-Log/><TerminalIO/><Disassembly><MixedMode>1</MixedMode><CodeCovShow>0</CodeCovShow></Disassembly></Static>
+    <Windows>
+      
+    <Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-929-5381</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>&lt;ws></ExpandedNode><ExpandedNode>&lt;ws>/demo</ExpandedNode><ExpandedNode>&lt;ws>/demo/Source</ExpandedNode><ExpandedNode>driverlib</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd3><Tabs><Tab><Identity>TabID-30226-6674</Identity><TabName>Build</TabName><Factory>Build</Factory><Session/></Tab><Tab><Identity>TabID-14105-14345</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>F:\harry\boards\ek-lm3s811\blinky\blinky.c</Filename><XPos>0</XPos><YPos>27</YPos><SelStart>1639</SelStart><SelEnd>1639</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>F:\harry\driverlib\ewarm\Exe\driverlib.a</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>F:\harry\boards\ek-lm3s811\boot_demo1\boot_demo1.c</Filename><XPos>0</XPos><YPos>57</YPos><SelStart>2892</SelStart><SelEnd>2892</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>F:\harry\boards\ek-lm3s811\boot_demo2\boot_demo2.c</Filename><XPos>0</XPos><YPos>58</YPos><SelStart>2941</SelStart><SelEnd>2941</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>F:\harry\boards\ek-lm3s811\gpio_jtag\gpio_jtag.c</Filename><XPos>0</XPos><YPos>110</YPos><SelStart>0</SelStart><SelEnd>7971</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>F:\harry\boards\ek-lm3s811\uart_echo\uart_echo.c</Filename><XPos>0</XPos><YPos>103</YPos><SelStart>3849</SelStart><SelEnd>3849</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>F:\harry\boards\ek-lm3s811\timers\timers.c</Filename><XPos>0</XPos><YPos>115</YPos><SelStart>4407</SelStart><SelEnd>4407</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>F:\harry\boards\ek-lm3s811\pwmgen\pwmgen.c</Filename><XPos>0</XPos><YPos>48</YPos><SelStart>2452</SelStart><SelEnd>2452</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>F:\harry\driverlib\gpio.h</Filename><XPos>0</XPos><YPos>57</YPos><SelStart>2978</SelStart><SelEnd>2995</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>F:\harry\boards\ek-lm3s811\Demo_EK-LM3S811\demo.c</Filename><XPos>0</XPos><YPos>161</YPos><SelStart>3296</SelStart><SelEnd>3296</SelEnd></Tab><ActiveTab>9</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-00be9a90><key>iaridepm.enu1</key></Toolbar-00be9a90></Sizes></Row0></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>424</Bottom><Right>340</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>156250</sizeHorzCX><sizeHorzCY>263852</sizeHorzCY><sizeVertCX>267188</sizeVertCX><sizeVertCY>562005</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>289</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>291</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>383905</sizeHorzCY><sizeVertCX>156250</sizeVertCX><sizeVertCY>263852</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

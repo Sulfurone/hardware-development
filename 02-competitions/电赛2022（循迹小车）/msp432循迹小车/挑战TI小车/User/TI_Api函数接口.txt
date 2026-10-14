@@ -1,0 +1,13 @@
+（1）GPIO模块
+1.GPIO_setAsOutputPin(GPIO_PORT_P2,GPIO_PIN1);//设置P2^1为输出口
+2.GPIO_setOutputLowOnPin(GPIO_PORT_P2,GPIO_PIN1);//设置输出引脚P2^1为输出低电平
+3.GPIO_setOutputHighOnPin(GPIO_PORT_P2,GPIO_PIN1);//设置输出引脚P2^1为输出高电平
+4.GPIO_toggleOutputOnPin(GPIO_PORT_P2,GPIO_PIN2);//翻转输出引脚P2^1的电平
+
+5.GPIO_setAsInputPin(GPIO_PORT_P2,GPIO_PIN1);//设置P2^1为输入口
+6.GPIO_setAsInputPinWithPullDownResistor(GPIO_PORT_P2,GPIO_PIN1);//设置P2^1为输入下拉口
+7.GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P2,GPIO_PIN1);//设置P2^1为输入上拉口
+8.GPIO_getInputPinValue(GPIO_PORT_P1,GPIO_PIN1)//得到输入引脚P2^1是高电平还是低电平；1：高电平，0：低电平
+
+
+

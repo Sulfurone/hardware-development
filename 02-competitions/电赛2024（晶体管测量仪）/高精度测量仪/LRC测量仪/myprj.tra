@@ -1,0 +1,32 @@
+*** Creating Trace Output File 'myprj.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"main.o"'
+### List of Objects: adding '".\driverlib.lib"'
+### List of Objects: adding '"gpio.o"'
+### List of Objects: adding '"systeminit.o"'
+### List of Objects: adding '"adc.o"'
+### List of Objects: adding '"i2c.o"'
+### List of Objects: adding '"interrupt.o"'
+### List of Objects: adding '"sysctl.o"'
+### List of Objects: adding '"systick.o"'
+### List of Objects: adding '"timer.o"'
+### List of Objects: adding '"uart.o"'
+### List of Objects: adding '"key.o"'
+### List of Objects: adding '"ocm12864.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "startup.o" "main.o" ".\driverlib.lib" "gpio.o" "systeminit.o" "adc.o" "i2c.o" "interrupt.o" "sysctl.o" "systick.o" "timer.o" "uart.o" "key.o" "ocm12864.o" --strict --scatter "myprj.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\myprj.map" -o "myprj.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'myprj.axf'
+### ADS-LD Command File: 'myprj.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'myprj.lnp', Handle=0x000003DC
+### Writing '.lnp' file
+### ADS-LD Command file 'myprj.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

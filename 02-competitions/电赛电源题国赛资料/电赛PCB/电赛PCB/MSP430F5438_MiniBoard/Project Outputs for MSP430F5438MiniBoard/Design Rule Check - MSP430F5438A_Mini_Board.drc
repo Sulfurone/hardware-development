@@ -1,0 +1,48 @@
+Protel Design System Design Rule Check
+PCB File : E:\EDC PROJECT\MSP430F5438MiniBoard\MSP430F5438A_Mini_Board.PcbDoc
+Date     : 2021/6/14
+Time     : 19:29:57
+
+Processing Rule : Clearance Constraint (Gap=6mil) (InComponent('MSP430F5438')),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=8mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=20mil) (InPolygon),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=6mil) (Max=30mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=1000mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (7mil < 10mil) Between Arc (-1892mil,2156mil) on Top Solder And Track (-1907mil,2136mil)(-1907mil,2176mil) on Top Solder [Top Solder] Mask Sliver [7mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (7mil < 10mil) Between Arc (-1942mil,2156mil) on Top Solder And Track (-1927mil,2136mil)(-1927mil,2176mil) on Top Solder [Top Solder] Mask Sliver [7mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (7.764mil < 10mil) Between Pad Free-Q(-2356mil,2110mil) on Multi-Layer And Pad U1-1(-2352mil,2044.551mil) on Top Layer [Top Solder] Mask Sliver [7.764mil]
+Rule Violations :3
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+
+Violations Detected : 3
+Waived Violations : 0
+Time Elapsed        : 00:00:02

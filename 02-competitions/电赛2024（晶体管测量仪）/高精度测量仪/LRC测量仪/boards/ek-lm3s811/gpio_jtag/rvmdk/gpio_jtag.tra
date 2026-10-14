@@ -1,0 +1,21 @@
+*** Creating Trace Output File '.\rvmdk\gpio_jtag.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\rvmdk\gpio_jtag.o"'
+### List of Objects: adding '".\rvmdk\startup_rvmdk.o"'
+### List of Objects: adding '"..\..\..\driverlib\rvmdk\driverlib.lib"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\rvmdk\gpio_jtag.o" ".\rvmdk\startup_rvmdk.o" "..\..\..\driverlib\rvmdk\driverlib.lib" --library_type=microlib --strict --scatter "gpio_jtag.sct" 
+--entry Reset_Handler --autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\rvmdk\gpio_jtag.map" -o ".\rvmdk\gpio_jtag.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\rvmdk\gpio_jtag.axf'
+### ADS-LD Command File: '.\rvmdk\gpio_jtag.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\rvmdk\gpio_jtag.lnp', Handle=0x000002F4
+### Writing '.lnp' file
+### ADS-LD Command file '.\rvmdk\gpio_jtag.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

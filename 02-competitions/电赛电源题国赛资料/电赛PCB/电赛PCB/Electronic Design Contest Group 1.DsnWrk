@@ -1,0 +1,24 @@
+[ProjectGroup]
+Version=1.0
+[Project1]
+ProjectPath=AD_EXPANSION_and_IO_Buffer_SN74AHCT541_for_28379D_LAUNCHXL\IO_Buffer_SN74AHCT541.PrjPcb
+[Project2]
+ProjectPath=AD_EXPANSION_for_28379D_LAUNCHXL\AD_EXPANSION.PrjPcb
+[Project3]
+ProjectPath=Three_Phase_Rectifier_Filter\Three_Phase_Rectifier_Regulator.PrjPcb
+[Project4]
+ProjectPath=SYNC_BUCK_Si8233_2021.7.7\Si8233_SYNC_BUCK_2021.7.7.PrjPcb
+[Project5]
+ProjectPath=DSP_Expansion_Board_for_28379D_LAUNCHXL\DSP_Expansion_Board.PrjPcb
+[Project6]
+ProjectPath=Expamsion_Board_DCDC Ver_for_MSP430\Expansion Board DCDC Ver.PrjPcb
+[Project7]
+ProjectPath=HALL_CURRENT_SENSE_LEM_55P\HALL_CURRENT_SENSE_LEM_55P.PrjPcb
+[Project8]
+ProjectPath=HF_Voltage_Transformer\HF_Voltage_Transformer.PrjPcb
+[Project9]
+ProjectPath=Hall_Voltage\Hall_Voltage.PrjPcb
+[Project10]
+ProjectPath=Regulated_DCDC_3BUCK-1BOOST_Power_Board\Power Board.PrjPcb
+[Project11]
+ProjectPath=MSP430F5438_MiniBoard\MSP430F5438MiniBoard.PrjPCB

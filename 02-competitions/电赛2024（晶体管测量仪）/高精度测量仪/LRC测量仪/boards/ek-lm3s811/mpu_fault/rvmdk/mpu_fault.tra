@@ -1,0 +1,21 @@
+*** Creating Trace Output File '.\rvmdk\mpu_fault.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\rvmdk\mpu_fault.o"'
+### List of Objects: adding '".\rvmdk\startup_rvmdk.o"'
+### List of Objects: adding '"..\..\..\driverlib\rvmdk\driverlib.lib"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\rvmdk\mpu_fault.o" ".\rvmdk\startup_rvmdk.o" "..\..\..\driverlib\rvmdk\driverlib.lib" --library_type=microlib --strict --scatter "mpu_fault.sct" 
+--entry Reset_Handler --autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\rvmdk\mpu_fault.map" -o ".\rvmdk\mpu_fault.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\rvmdk\mpu_fault.axf'
+### ADS-LD Command File: '.\rvmdk\mpu_fault.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\rvmdk\mpu_fault.lnp', Handle=0x00000290
+### Writing '.lnp' file
+### ADS-LD Command file '.\rvmdk\mpu_fault.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
